@@ -134,6 +134,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBoot项目分层与层级理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/">SpringBoot项目分层与层级理解</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2023-05-21T17:46:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近正在学习springboot项目的底层原理，下面总结以下springBoot的项目分层结构与对于整体的层级架构理解</p>
+<h1 id="SpringBoot项目分层"><a href="#SpringBoot项目分层" class="headerlink" title="SpringBoot项目分层"></a>SpringBoot项目分层</h1><h2 id="SpringBoot简单分层"><a href="#SpringBoot简单分层" class="headerlink" title="SpringBoot简单分层"></a>SpringBoot简单分层</h2><blockquote>
+<ul>
+<li><strong>controller</strong>：编写后端提供前端的接口。</li>
+<li><strong>entity</strong>：主要放实体类Bean。</li>
+<li><strong>service</strong>：业务层，编写复杂的服务功能，例如：复杂的数据库操作等。</li>
+<li><strong>impl</strong>：整合service和dao层内容，提供后端完整接口调用。</li>
+<li><strong>mapper</strong>:放Mybatis的xml文件。</li>
+<li><strong>dao</strong>：与在mapper中Mybatis的xml中，sql语句相互形成映射关系，一般为对应实体类简单数据库操作的接口。</li>
+</ul>
+</blockquote>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-动态规划算法的打印思路" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -155,6 +235,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>每次用动态规划求最佳值问题的时候，总会想到一个问题，该如何将每一种结果打印到控制台中呢？下面两段实例说不定会给你新的思路</p>
+<h3 id="零钱兑换I-and-零钱兑换II"><a href="#零钱兑换I-and-零钱兑换II" class="headerlink" title="零钱兑换I and  零钱兑换II"></a>零钱兑换I and  零钱兑换II</h3><h4 id="1-零钱兑换I："><a href="#1-零钱兑换I：" class="headerlink" title="(1)零钱兑换I："></a>(1)零钱兑换I：</h4><p>贪心算法</p>
+<p>伪代码描述思想：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">完全背包之求凑满背包的最少物品数:</span><br><span class="line">容量-&gt;amount; 物品重量-&gt;coins[i]; 价值-&gt;<span class="number">1</span>; 优化目标-&gt;求恰好凑满背包的物品最小价值</span><br><span class="line"><span class="number">1.</span>状态定义:dp[j]为凑满容量为j的背包所需最少物品数</span><br><span class="line"><span class="number">2.</span>状态转移:考虑coins[i]</span><br><span class="line">    <span class="number">2.1</span> 当j&lt;coins[i]时:装不下,继承上一个dp[j]的值</span><br><span class="line">    <span class="number">2.2</span> 当j&gt;=coins[i]时:可以装得下,可以选择装或者不装中价值小的(物品数小的)进行转移</span><br><span class="line">        即:dp[j]=min(dp[j],dp[j-coins[i]+<span class="number">1</span>])</span><br><span class="line"><span class="number">3.</span>初始化:容量为<span class="number">0</span>,最少要装<span class="number">0</span>个就可以装满-&gt;dp[<span class="number">0</span>]=<span class="number">0</span>,看转移方程,其他的要初始化为Integer.MAX_VALUE</span><br><span class="line"><span class="number">4.</span>遍历顺序:这里求最少的物品数,因此排列与组合均可,这里先物品后容量,物品顺序无所谓,容量必须正序(完全背包)</span><br><span class="line"><span class="number">5.</span>返回形式:返回如果dp[amount]有转移直接返回,如果没有转移返回-<span class="number">1</span></span><br></pre></td></tr></table></figure>
         
       
 
@@ -295,6 +378,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>一些关于java socket通信编程的实例解释</p>
+<h3 id="1-需求：客户端实现步骤："><a href="#1-需求：客户端实现步骤：" class="headerlink" title="1.需求：客户端实现步骤："></a>1.需求：客户端实现步骤：</h3><ul>
+<li><p>创建客户端的socket对象，请求与服务端的连接。</p>
+</li>
+<li><p>使用socket对象调用getOutputStream（）方法得到字节输出流</p>
+</li>
+<li><p>使用字节输出流完成数据的发送</p>
+</li>
+<li><p>释放资源：关闭socket管道</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClientDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Socket</span>(<span class="string">&quot;127.0.0.1&quot;</span> , <span class="number">7777</span>);</span><br><span class="line"></span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> socket.getOutputStream();</span><br><span class="line"></span><br><span class="line">            <span class="type">PrintStream</span> <span class="variable">ps</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintStream</span>(os);</span><br><span class="line"></span><br><span class="line">            ps.print(<span class="string">&quot;I&#x27;m TCP client , have your time?&quot;</span>);</span><br><span class="line"></span><br><span class="line">            ps.flush();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
       
 
@@ -365,6 +459,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>java logback日志使用教程</p>
+<h2 id="log-QU"><a href="#log-QU" class="headerlink" title="log QU"></a>log QU</h2><p>1.概述java logback日志使用教程</p>
+<p>日志规范大多是一些接口 ， 提供给实现框架去设计的</p>
+<p>常见规范：</p>
+<p>Commons Logging</p>
+<p>Simple Logging Facade for java</p>
+<p>2.日志的实现框架有那些常见的？</p>
+<p>Log4j</p>
+<p>Logback日志框架（快速入门）</p>
+<p>Logback是一个开源日志组件</p>
+<p>是基于slf4j的日志规范实现的框架</p>
         
       
 
@@ -544,6 +648,80 @@
 
 
   
+    <article id="post-一些对于POJO的理解（Spring）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/22/%E4%B8%80%E4%BA%9B%E5%AF%B9%E4%BA%8EPOJO%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%88Spring%EF%BC%89/">一些对于POJO的理解（Spring）</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/22/%E4%B8%80%E4%BA%9B%E5%AF%B9%E4%BA%8EPOJO%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%88Spring%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2023-03-21T17:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一些对POJO的理解（Spring）"><a href="#一些对POJO的理解（Spring）" class="headerlink" title="一些对POJO的理解（Spring）"></a>一些对POJO的理解（Spring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直想对POJO做一个总结，POJO在开发中到底是什么？为什么会提出POJO？POJO在开发中体现在哪些地方？这其实是我一直关心的，在一开始接触Java时，其实我对这POJO的概念并不是理解很深，只停留在概念上，随着我对Java的不断深入理解，我从Spring身上看到了POJO的影子，所以想从Spring上浅谈一下我对POJO的理解，内容并不深，这里我并不想专门的谈论Spring，而是从一些基本的使用角度上浅谈POJO，也能进一步理解Spring设计理念的一些体现。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaEE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
@@ -634,6 +812,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
               </li>
              
               <li class="article-tag-list-item">

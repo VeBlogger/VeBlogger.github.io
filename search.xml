@@ -3,24 +3,67 @@
   
     
     <entry>
+      <title><![CDATA[SpringBoot项目分层与层级理解]]></title>
+      <url>/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/</url>
+      <content type="html"><![CDATA[<p>最近正在学习springboot项目的底层原理，下面总结以下springBoot的项目分层结构与对于整体的层级架构理解</p>
+<h1 id="SpringBoot项目分层"><a href="#SpringBoot项目分层" class="headerlink" title="SpringBoot项目分层"></a>SpringBoot项目分层</h1><h2 id="SpringBoot简单分层"><a href="#SpringBoot简单分层" class="headerlink" title="SpringBoot简单分层"></a>SpringBoot简单分层</h2><blockquote>
+<ul>
+<li><strong>controller</strong>：编写后端提供前端的接口。</li>
+<li><strong>entity</strong>：主要放实体类Bean。</li>
+<li><strong>service</strong>：业务层，编写复杂的服务功能，例如：复杂的数据库操作等。</li>
+<li><strong>impl</strong>：整合service和dao层内容，提供后端完整接口调用。</li>
+<li><strong>mapper</strong>:放Mybatis的xml文件。</li>
+<li><strong>dao</strong>：与在mapper中Mybatis的xml中，sql语句相互形成映射关系，一般为对应实体类简单数据库操作的接口。</li>
+</ul>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="springboot的MVC分层方式"><a href="#springboot的MVC分层方式" class="headerlink" title="springboot的MVC分层方式"></a>springboot的MVC分层方式</h2><blockquote>
+<p><strong>demo-model</strong>：主要是后端代码与数据库数据之间的交互。存放mybatis的相关文件，有config配置文件、entity实体类、mapper接口等。<br><strong>demo-service</strong>：主要业务层，编写复杂功能，提供impl接口。<br><strong>demo-web</strong>：后端给前端提供的接口，主要存放controller。<br><strong>start</strong>：只做启动和测试使用。</p>
+</blockquote>
+<h2 id="具体分层架构"><a href="#具体分层架构" class="headerlink" title="具体分层架构"></a>具体分层架构</h2><ul>
+<li>demo-api：为后端与后端交互而提供的接口服务。</li>
+<li>demo-dao：后端与数据库直接交互的地方。</li>
+<li>demo-manager：代码管理层。</li>
+<li>demo-service：复杂业务层。</li>
+<li>demo-web：为前端提供接口。</li>
+<li>start：启动和测试使用。</li>
+</ul>
+<h2 id="COLA分层"><a href="#COLA分层" class="headerlink" title="COLA分层"></a>COLA分层</h2><p>大型企业项目分层</p>
+<h1 id="SpringBoot层级理解"><a href="#SpringBoot层级理解" class="headerlink" title="SpringBoot层级理解"></a>SpringBoot层级理解</h1><h2 id="model（entity）"><a href="#model（entity）" class="headerlink" title="model（entity）"></a>model（entity）</h2><blockquote>
+<p>model是模型的意思，与entity、domain、pojo类似，是存放实体的类，类中定义了多个类属性，并与数据库表的字段保持一致，一张表对应一个model类。<br>主要用于定义与数据库对象应的属性，提供get&#x2F;set方法,tostring方法,有参无参构造函数。</p>
+</blockquote>
+<h2 id="dao（mapper）"><a href="#dao（mapper）" class="headerlink" title="dao（mapper）"></a>dao（mapper）</h2><blockquote>
+<p>又被成为mapper层，叫数据持久层，先设计接口，然后在配置文件中进行配置其实现的关联。<br>dao层的作用为访问数据库，向数据库发送sql语句，完成数据的增删改查任务。<br>数据持久化操作就是指，把数据放到持久化的介质中，同时提供增删改查操作，比如数据通过hibernate插入到数据库中</p>
+</blockquote>
+<h2 id="service"><a href="#service" class="headerlink" title="service"></a>service</h2><blockquote>
+<p>业务逻辑层，完成功能的设计和dao层一样都是先设计接口，再创建要实现的类，然后在配置文件中进行配置其实现的关联。接下来就可以在service层调用dao层的接口进行业务逻辑应用的处理。<br>service的impl是把mapper和service进行整合的文件<br>封装Service层的业务逻辑有利于业务逻辑的独立性和重复利用性。</p>
+</blockquote>
+<h2 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h2><blockquote>
+<p>控制层，控制业务逻辑service，控制请求和响应，负责前后端交互<br>controller层主要调用Service层里面的接口控制具体的业务流程，控制的配置也要在配置文件中进行</p>
+</blockquote>
+<h2 id="层次结构图"><a href="#层次结构图" class="headerlink" title="层次结构图"></a>层次结构图</h2><img src="C:\Users\22807\AppData\Roaming\Typora\typora-user-images\image-20230522011812169.png" alt="image-20230522011812169" style="zoom:80%;" />
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> SpringBoot </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[动态规划算法的打印思路]]></title>
       <url>/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/</url>
       <content type="html"><![CDATA[<p>每次用动态规划求最佳值问题的时候，总会想到一个问题，该如何将每一种结果打印到控制台中呢？下面两段实例说不定会给你新的思路</p>
-<span id="more"></span>
-
 <h3 id="零钱兑换I-and-零钱兑换II"><a href="#零钱兑换I-and-零钱兑换II" class="headerlink" title="零钱兑换I and  零钱兑换II"></a>零钱兑换I and  零钱兑换II</h3><h4 id="1-零钱兑换I："><a href="#1-零钱兑换I：" class="headerlink" title="(1)零钱兑换I："></a>(1)零钱兑换I：</h4><p>贪心算法</p>
 <p>伪代码描述思想：</p>
-<pre><code>完全背包之求凑满背包的最少物品数:
-容量-&gt;amount; 物品重量-&gt;coins[i]; 价值-&gt;1; 优化目标-&gt;求恰好凑满背包的物品最小价值
-1.状态定义:dp[j]为凑满容量为j的背包所需最少物品数
-2.状态转移:考虑coins[i]
-    2.1 当j&lt;coins[i]时:装不下,继承上一个dp[j]的值
-    2.2 当j&gt;=coins[i]时:可以装得下,可以选择装或者不装中价值小的(物品数小的)进行转移
-        即:dp[j]=min(dp[j],dp[j-coins[i]+1])
-3.初始化:容量为0,最少要装0个就可以装满-&gt;dp[0]=0,看转移方程,其他的要初始化为Integer.MAX_VALUE
-4.遍历顺序:这里求最少的物品数,因此排列与组合均可,这里先物品后容量,物品顺序无所谓,容量必须正序(完全背包)
-5.返回形式:返回如果dp[amount]有转移直接返回,如果没有转移返回-1
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">完全背包之求凑满背包的最少物品数:</span><br><span class="line">容量-&gt;amount; 物品重量-&gt;coins[i]; 价值-&gt;<span class="number">1</span>; 优化目标-&gt;求恰好凑满背包的物品最小价值</span><br><span class="line"><span class="number">1.</span>状态定义:dp[j]为凑满容量为j的背包所需最少物品数</span><br><span class="line"><span class="number">2.</span>状态转移:考虑coins[i]</span><br><span class="line">    <span class="number">2.1</span> 当j&lt;coins[i]时:装不下,继承上一个dp[j]的值</span><br><span class="line">    <span class="number">2.2</span> 当j&gt;=coins[i]时:可以装得下,可以选择装或者不装中价值小的(物品数小的)进行转移</span><br><span class="line">        即:dp[j]=min(dp[j],dp[j-coins[i]+<span class="number">1</span>])</span><br><span class="line"><span class="number">3.</span>初始化:容量为<span class="number">0</span>,最少要装<span class="number">0</span>个就可以装满-&gt;dp[<span class="number">0</span>]=<span class="number">0</span>,看转移方程,其他的要初始化为Integer.MAX_VALUE</span><br><span class="line"><span class="number">4.</span>遍历顺序:这里求最少的物品数,因此排列与组合均可,这里先物品后容量,物品顺序无所谓,容量必须正序(完全背包)</span><br><span class="line"><span class="number">5.</span>返回形式:返回如果dp[amount]有转移直接返回,如果没有转移返回-<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">coinChange</span><span class="params">(<span class="type">int</span>[] coins, <span class="type">int</span> amount)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[amount + <span class="number">1</span>];</span><br><span class="line">        Arrays.fill(dp, Integer.MAX_VALUE);</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> coin : coins) &#123;</span><br><span class="line">            <span class="comment">// 正序,j从coin开始即可</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> coin; j &lt;= amount; j++) &#123;</span><br><span class="line">                <span class="comment">// 前面dp值在有计算过的基础上才能转移</span></span><br><span class="line">                <span class="keyword">if</span>(dp[j - coin] != Integer.MAX_VALUE) dp[j] = Math.min(dp[j], dp[j - coin] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 有转移直接返回,没有转移说明凑不成返回-1</span></span><br><span class="line">        <span class="keyword">return</span> dp[amount] == Integer.MAX_VALUE ? -<span class="number">1</span> : dp[amount];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -260,8 +303,6 @@
       <title><![CDATA[socket网络编程实战（java）]]></title>
       <url>/2023/04/24/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%88java%EF%BC%89/</url>
       <content type="html"><![CDATA[<p>一些关于java socket通信编程的实例解释</p>
-<span id="more"></span>
-
 <h3 id="1-需求：客户端实现步骤："><a href="#1-需求：客户端实现步骤：" class="headerlink" title="1.需求：客户端实现步骤："></a>1.需求：客户端实现步骤：</h3><ul>
 <li><p>创建客户端的socket对象，请求与服务端的连接。</p>
 </li>
@@ -273,6 +314,8 @@
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClientDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Socket</span>(<span class="string">&quot;127.0.0.1&quot;</span> , <span class="number">7777</span>);</span><br><span class="line"></span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> socket.getOutputStream();</span><br><span class="line"></span><br><span class="line">            <span class="type">PrintStream</span> <span class="variable">ps</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintStream</span>(os);</span><br><span class="line"></span><br><span class="line">            ps.print(<span class="string">&quot;I&#x27;m TCP client , have your time?&quot;</span>);</span><br><span class="line"></span><br><span class="line">            ps.flush();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
 
 <h3 id="2-需求：客户端接收消息"><a href="#2-需求：客户端接收消息" class="headerlink" title="2.需求：客户端接收消息"></a>2.需求：客户端接收消息</h3><p>1.注册端口</p>
 <p>2.连接socket通信管道，用端口接受信息</p>
@@ -354,11 +397,6 @@
       <title><![CDATA[日志框架:logback快速入门]]></title>
       <url>/2023/04/24/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6-logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</url>
       <content type="html"><![CDATA[<p>java logback日志使用教程</p>
-<span id="more"></span>
-
-<hr>
-<p>[TOC]</p>
-<hr>
 <h2 id="log-QU"><a href="#log-QU" class="headerlink" title="log QU"></a>log QU</h2><p>1.概述java logback日志使用教程</p>
 <p>日志规范大多是一些接口 ， 提供给实现框架去设计的</p>
 <p>常见规范：</p>
@@ -369,6 +407,8 @@
 <p>Logback日志框架（快速入门）</p>
 <p>Logback是一个开源日志组件</p>
 <p>是基于slf4j的日志规范实现的框架</p>
+<span id="more"></span>
+
 <p>3.技术模块：</p>
 <p>logback-core : 是为其他两个模块奠定了基础，必须有</p>
 <p>logback-classic: log4j的是一个改良版本，同时完整地实现了slf4j API</p>
@@ -471,6 +511,49 @@
       <content type="html"><![CDATA[<h3 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PLAINTEXT</span><br><span class="line">npm i hexo-deployer-git</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo new post &quot;新建博客文章名&quot;</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo cl &amp;&amp; hexo g  &amp;&amp; hexo s</span><br><span class="line">远端提交</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 ]]></content>
       
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[一些对于POJO的理解（Spring）]]></title>
+      <url>/2023/03/22/%E4%B8%80%E4%BA%9B%E5%AF%B9%E4%BA%8EPOJO%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%88Spring%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="一些对POJO的理解（Spring）"><a href="#一些对POJO的理解（Spring）" class="headerlink" title="一些对POJO的理解（Spring）"></a>一些对POJO的理解（Spring）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直想对POJO做一个总结，POJO在开发中到底是什么？为什么会提出POJO？POJO在开发中体现在哪些地方？这其实是我一直关心的，在一开始接触Java时，其实我对这POJO的概念并不是理解很深，只停留在概念上，随着我对Java的不断深入理解，我从Spring身上看到了POJO的影子，所以想从Spring上浅谈一下我对POJO的理解，内容并不深，这里我并不想专门的谈论Spring，而是从一些基本的使用角度上浅谈POJO，也能进一步理解Spring设计理念的一些体现。</p>
+<span id="more"></span>
+
+<h2 id="什么是POJO？"><a href="#什么是POJO？" class="headerlink" title="什么是POJO？"></a>什么是POJO？</h2><blockquote>
+<p>POJO，即”Plain Old Java Object”。我们可以认为POJO是一个”纯粹”的Java对象，而什么是”纯粹”的Java对象？就是以Java语言规范为基础设计的对象就是一个POJO。从而进一步我们可以理解POJO是指没有实现相关第三方接口、继承相关的第三方类的Java对象，即非侵入的Java对象。</p>
+</blockquote>
+<h2 id="为什么会出现POJO？"><a href="#为什么会出现POJO？" class="headerlink" title="为什么会出现POJO？"></a>为什么会出现POJO？</h2><blockquote>
+<p>POJO可以从以前的EJB开发模式中谈起，在Spring以前，EJB主导的开发模式中，EJB开发者需要依赖按照J2EE规范实现的J2EE应用服务器，具体实现时需要遵循一系列的接口标准，这样才能够在应用服务器的环境中得到测试和部署（特别是测试环境依赖于对制定规范接口的调用），所以在EJB规范中设计的各种类大都属于侵入式，即，他们会去实现相关的接口、继承相关的父类，他们与业务紧密相连，而不是一个简单的、纯粹的类，而Spring设计者提倡<strong>J2EE without EJB</strong>，正是基于POJO的设计思想，让我们在业务系统中设计一些“纯粹的”类，它们只是符合Java语言规范的简单Java对象，这样脱离以前EJB复杂的开发流程下，我们开发的入门、测试、应用部署都得到了简化。</p>
+</blockquote>
+<h2 id="最基本的POJO"><a href="#最基本的POJO" class="headerlink" title="最基本的POJO"></a>最基本的POJO</h2><p>比如一个简单的User类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="type">long</span> id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setId</span><span class="params">(<span class="type">long</span> id)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>. id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>. name=name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">long</span> <span class="title function_">getId</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述就是一个简单的POJO，它并未与其他业务框架产生耦合，比如实现特定业务框架的接口、继承相关业务类等，它只不过是简单的按照Java语言规范定义了相关的private 属性，并提供基本的<strong>getter、setter</strong>对外暴露接口提供对该对象的基本操作。</p>
+<h2 id="POJO的实际应用"><a href="#POJO的实际应用" class="headerlink" title="POJO的实际应用"></a>POJO的实际应用</h2><p>基于上述基本的POJO的设计后，虽然它此时并不能为我们的业务提供支持，但我们现在就可以在此基础上进行不断的扩展，让它不断的适配我们的业务系统，比如现在我们的系统需要相关的身份验证、鉴权，那么我们就可以让该POJO实现Spring Security特有的UserDetail接口，此时它就从一个普通的POJO摇身一变成为了与系统安全相关的业务类。而如果我们不是想做系统安全相关的系统设计，而是打算让它成为数据库用户表的数据承载，那么我们甚至可以不用修改它，让它作为数据库查询、插入相关的数据载体等。此时这两种应用场景的示例都是在POJO基础上进行扩展的，基于POJO简单的特点，使得我们在开发时可以在POJO基础上具有高度的扩展性，完成不同方向的设计，这就是Spring所提倡的POJO开发方式。</p>
+<p>另一个更能说明的例子就是SpringMVC，在原本J2EE规范下进行Web开发时，我们往往会根据特定业务设计一种类型的Servlet，而为了支持被Web容器所管理，通常我们会去继承HttpServlet，比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FooHttpServlet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">	            <span class="comment">// code </span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">               <span class="comment">// code</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">               <span class="comment">// code</span></span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>上述的FooHttpServlet 就不是一个POJO，因为它继承了特定规范的 HttpServlet 抽象类，我们可以认为这个类已经被侵入了，所以它只能用于特定的场合（Web）。</p>
+<p>但SpringMVC设计理念中，以DispatcherServlet为核心的MVC模式所设计的Controller，比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FooController</span> &#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">methdA</span><span class="params">()</span>&#123;</span><br><span class="line">			<span class="comment">// code</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它就是一个POJO，因为它本身没有实现相关的接口、继承相关的类等，而如果在SpringMVC层面，我们要让这个POJO起作用，我们只需要将它通过在XML配置Bean的方式让IOC容器启动时扫描并加入到容器中即可提供服务，这就是Spring所一直倡导的POJO开发模式的具体体现之一，这种方式是相当的简洁的，因为如果它不是一个POJO，比如它还实现了相关接口、继承相关的类，那么我们在使用时还需要了解这些接口规范等，那么开发时也就有了复杂性，而简单的一个POJO，我们只需要停留在这一个层面即可，对比起来POJO的优势就体现出来的。</p>
+<p>当然，现在实际开发中，我们并不会完全的按照POJO的设计方式，比如上面的FooController我们很少会专门在XML中配置它，而是通过在上面注解的方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span> <span class="comment">//注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyController</span> &#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">methdA</span><span class="params">()</span>&#123;</span><br><span class="line">			<span class="comment">// code</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>严格按照POJO的定义来理解，那么它此时就不是一个POJO了，但总的来说，它比起原本J2EE开发模式中使用Servlet 已经相当的简洁的，上述虽然严格上不是一个POJO，但可以认为它是在POJO的基础上进行扩展的，而Spring要做到基于POJO或以POJO为基础进行扩展的开发模式，首先要做的就是在原本特定场合（如Web）的规范下向上抽象，通过建立抽象层使得我们可以只需要在最上层通过设计简单的POJO或基于POJO扩展的对象就能完成应用功能的设计，而基于Spring的相关应用（如MVC、Security）帮助我们完成了中间层复杂的转换，其实现核心就是，将开发中面临的共性问题集中抽象，Spring对抽象层进行实现，从而为开发者提供最小程度的设计成本，也就是设计一个最简单的POJO来完成应用的开发，这就是Spring希望做的。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Spring </tag>
+            
+            <tag> JavaEE </tag>
+            
+        </tags>
         
     </entry>
     
