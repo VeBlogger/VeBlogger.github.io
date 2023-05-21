@@ -5,7 +5,10 @@
     <entry>
       <title><![CDATA[动态规划算法的打印思路]]></title>
       <url>/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/</url>
-      <content type="html"><![CDATA[<h3 id="零钱兑换I-and-零钱兑换II"><a href="#零钱兑换I-and-零钱兑换II" class="headerlink" title="零钱兑换I and  零钱兑换II"></a>零钱兑换I and  零钱兑换II</h3><h4 id="1-零钱兑换I："><a href="#1-零钱兑换I：" class="headerlink" title="(1)零钱兑换I："></a>(1)零钱兑换I：</h4><p>贪心算法</p>
+      <content type="html"><![CDATA[<p>每次用动态规划求最佳值问题的时候，总会想到一个问题，该如何将每一种结果打印到控制台中呢？下面两段实例说不定会给你新的思路</p>
+<span id="more"></span>
+
+<h3 id="零钱兑换I-and-零钱兑换II"><a href="#零钱兑换I-and-零钱兑换II" class="headerlink" title="零钱兑换I and  零钱兑换II"></a>零钱兑换I and  零钱兑换II</h3><h4 id="1-零钱兑换I："><a href="#1-零钱兑换I：" class="headerlink" title="(1)零钱兑换I："></a>(1)零钱兑换I：</h4><p>贪心算法</p>
 <p>伪代码描述思想：</p>
 <pre><code>完全背包之求凑满背包的最少物品数:
 容量-&gt;amount; 物品重量-&gt;coins[i]; 价值-&gt;1; 优化目标-&gt;求恰好凑满背包的物品最小价值
@@ -49,7 +52,10 @@
     <entry>
       <title><![CDATA[Java注解机制与junit单元测试框架]]></title>
       <url>/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</url>
-      <content type="html"><![CDATA[<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+      <content type="html"><![CDATA[<p>项目构建过程中很多地方需要用到注解，并且需要对每块功能做测试，那么注解到底是什么，该如何自定义注解？junit单元测试的使用方法？</p>
+<span id="more"></span>
+
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
 <li><a href="https://www.bmabk.com/index.php/post/122326.html#Annotation_1">注解(Annotation)概述</a></li>
 <li><a href="https://www.bmabk.com/index.php/post/122326.html#Annotation_10">常见的Annotation实例</a></li>
 <li><ul>
@@ -253,7 +259,10 @@
     <entry>
       <title><![CDATA[socket网络编程实战（java）]]></title>
       <url>/2023/04/24/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%88java%EF%BC%89/</url>
-      <content type="html"><![CDATA[<h3 id="1-需求：客户端实现步骤："><a href="#1-需求：客户端实现步骤：" class="headerlink" title="1.需求：客户端实现步骤："></a>1.需求：客户端实现步骤：</h3><ul>
+      <content type="html"><![CDATA[<p>一些关于java socket通信编程的实例解释</p>
+<span id="more"></span>
+
+<h3 id="1-需求：客户端实现步骤："><a href="#1-需求：客户端实现步骤：" class="headerlink" title="1.需求：客户端实现步骤："></a>1.需求：客户端实现步骤：</h3><ul>
 <li><p>创建客户端的socket对象，请求与服务端的连接。</p>
 </li>
 <li><p>使用socket对象调用getOutputStream（）方法得到字节输出流</p>
@@ -344,10 +353,13 @@
     <entry>
       <title><![CDATA[日志框架:logback快速入门]]></title>
       <url>/2023/04/24/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6-logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</url>
-      <content type="html"><![CDATA[<hr>
+      <content type="html"><![CDATA[<p>java logback日志使用教程</p>
+<span id="more"></span>
+
+<hr>
 <p>[TOC]</p>
 <hr>
-<h2 id="log-QU"><a href="#log-QU" class="headerlink" title="log QU"></a>log QU</h2><p>1.日志的规范是什么？常见的有几种形式？</p>
+<h2 id="log-QU"><a href="#log-QU" class="headerlink" title="log QU"></a>log QU</h2><p>1.概述java logback日志使用教程</p>
 <p>日志规范大多是一些接口 ， 提供给实现框架去设计的</p>
 <p>常见规范：</p>
 <p>Commons Logging</p>
@@ -423,6 +435,8 @@
       <url>/2023/04/22/java%E7%A7%BB%E4%BD%8D%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>在 Java 代码里使用 &lt;&lt; 、 &gt;&gt; 和&gt;&gt;&gt;转换成的指令码运行起来会更高效些。</p>
 <p>掌握最基本的移位运算符知识还是很有必要的，这不光可以帮助我们在代码中使用，还可以帮助我们理解源码中涉及到移位运算符的代码。</p>
+<span id="more"></span>
+
 <p>Java 中有三种移位运算符：</p>
 <p>&lt;&lt; :左移运算符，向左移若干位，高位丢弃，低位补零。x &lt;&lt; 1,相当于 x 乘以 2(不溢出的情况下)。</p>
 <p>&gt;&gt; :带符号右移，向右移若干位，高位补符号位，低位丢弃。正数高位补 0,负数高位补 1。x &gt;&gt; 1,相当于 x 除以 2。 </p>

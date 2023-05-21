@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>日志框架:logback快速入门 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[TOC]  log QU1.日志的规范是什么？常见的有几种形式？ 日志规范大多是一些接口 ， 提供给实现框架去设计的 常见规范： Commons Logging Simple Logging Facade for java 2.日志的实现框架有那些常见的？ Log4j Logback日志框架（快速入门） Logback是一个开源日志组件 是基于slf4j的日志规范实现的框架 3.技术模块： l">
+  <meta name="description" content="java logback日志使用教程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="日志框架:logback快速入门">
 <meta property="og:url" content="http://example.com/2023/04/24/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6-logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[TOC]  log QU1.日志的规范是什么？常见的有几种形式？ 日志规范大多是一些接口 ， 提供给实现框架去设计的 常见规范： Commons Logging Simple Logging Facade for java 2.日志的实现框架有那些常见的？ Log4j Logback日志框架（快速入门） Logback是一个开源日志组件 是基于slf4j的日志规范实现的框架 3.技术模块： l">
+<meta property="og:description" content="java logback日志使用教程">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://res.craft.do/user/full/99fc6c46-0285-ec72-c3bf-f057caf908c9/doc/59be5336-7435-47b4-a3e5-5e6c232451f2/d07b4e3e-5b7d-480b-97f7-b7c086bbe007">
 <meta property="article:published_time" content="2023-04-24T02:53:57.000Z">
-<meta property="article:modified_time" content="2023-05-21T06:26:52.153Z">
+<meta property="article:modified_time" content="2023-05-21T07:12:01.213Z">
 <meta property="article:author" content="Veblogger">
 <meta property="article:tag" content="JavaSE">
 <meta name="twitter:card" content="summary">
@@ -62,8 +62,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -82,15 +80,13 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
+			
+			<!--音乐播放插件-->
+     			 <div style="margin-top:30px;">
+       			 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=250 height=85 src="//music.163.com/outchain/player?type=2&id=27731362&auto=1&height=66"></iframe>
+      			</div>
+    		        
 		</nav>
 	</header>		
 </div>
@@ -116,21 +112,11 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -138,9 +124,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -175,10 +159,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
+        <p>java logback日志使用教程</p>
+<span id="more"></span>
+
+<hr>
 <p>[TOC]</p>
 <hr>
-<h2 id="log-QU"><a href="#log-QU" class="headerlink" title="log QU"></a>log QU</h2><p>1.日志的规范是什么？常见的有几种形式？</p>
+<h2 id="log-QU"><a href="#log-QU" class="headerlink" title="log QU"></a>log QU</h2><p>1.概述java logback日志使用教程</p>
 <p>日志规范大多是一些接口 ， 提供给实现框架去设计的</p>
 <p>常见规范：</p>
 <p>Commons Logging</p>
@@ -373,6 +360,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#log-QU"><span class="toc-number">1.</span> <span class="toc-text">log QU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">Logback快速入门：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#logse"><span class="toc-number">2.1.</span> <span class="toc-text">logse</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Logback%E7%9A%84API%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">Logback的API操作：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E6%AE%B5log%E5%AE%9E%E4%BE%8B%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">一段log实例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logla"><span class="toc-number">3.2.</span> <span class="toc-text">logla</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -384,6 +384,22 @@
 
   
 
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
 
   
@@ -417,7 +433,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
