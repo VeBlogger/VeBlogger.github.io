@@ -152,6 +152,269 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java注解机制与junit单元测试框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">Java注解机制与junit单元测试框架</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" class="archive-article-date">
+  	<time datetime="2023-05-21T06:24:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#Annotation_1">注解(Annotation)概述</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#Annotation_10">常见的Annotation实例</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#_16">情况一</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#_31">情况二</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#Annotation_58">自定义Annotation</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#JDK_80">JDK中的元注解</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#Retention_97">@Retention</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#Target_128">@Target</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#Documented_196">@Documented</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#Inherited_201">@Inherited</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#JDK8_204">JDK8中注解的新特性</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#_209">可重复注解</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#_264">类型注解</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#JUnit_315">JUnit单元测试</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#_317">测试分类</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#JUnit_329">JUnit单元测试介绍</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#JUnitjar_339">引入本地JUnit.jar</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#Test_382">编写和运行@Test单元测试方法</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#JUnit_415">设置执行JUnit用例时支持控制台输入</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/122326.html#test_442">定义test测试方法模板</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="注解-Annotation-概述"><a href="#注解-Annotation-概述" class="headerlink" title="注解(Annotation)概述"></a>注解(Annotation)概述</h1><ul>
+<li>① 从 JDK 5.0 开始, <a target="_blank" rel="noopener" href="https://www.bmabk.com/"><strong>java</strong></a> 增加了对元数据(MetaData) 的支持, 也就是Annotation(注解)</li>
+<li>② Annotation 其实就是代码里的<strong>特殊标记</strong>, <strong>这些标记可以在编译, 类加载, 运行时被读取, 并执行相应的处理</strong>。<strong>通过使用 Annotation, 程序员可以在不改变原有逻辑的情况下, 在源文件中嵌入一些补充信息</strong>。</li>
+<li>③Annotation 可以像修饰符一样被使用, 可用于<strong>修饰包</strong>,<strong>类</strong>, <strong>构造器</strong>, <strong>方法</strong>, <strong>成员变量</strong>, <strong>参数</strong>, <strong>局部变量</strong>的声明, 这些信息被保存在Annotation 的 “name&#x3D;value” 对中。</li>
+<li>④在JavaSE中，注解的使用目的比较简单，例如标记过时的功能，忽略警告等。在JavaEE&#x2F;Android中注解占据了更重要的角色，例如用来配置应用程序的任何切面，代替JavaEE旧版中所遗留的繁冗代码和XML配置等。</li>
+<li>⑤未来的开发模式都是基于注解的，JPA是基于注解的，<a target="_blank" rel="noopener" href="https://www.bmabk.com/"><strong>spring</strong></a>2.5以上都是基于注解的，Hibernate3.x以后也是基于注解的，现在的Struts2有一部分也是基于注解的了，注解是一种趋势，一定程度上可以说：<strong>框架 &#x3D; 注解 + 反射 + 设计模式</strong>。</li>
+</ul>
+<h1 id="常见的Annotation实例"><a href="#常见的Annotation实例" class="headerlink" title="常见的Annotation实例"></a>常见的Annotation实例</h1><ul>
+<li>①生成文档相关的注释</li>
+<li>②在编译时进行格式检查(JDK内置的三个基本注解)</li>
+<li>③跟踪代码依赖性，实现替代配置文件功能</li>
+</ul>
+<h2 id="情况一"><a href="#情况一" class="headerlink" title="情况一"></a>情况一</h2><p>@author 标明开发该类模块的作者，多个作者之间使用“,”分割<br>@version 标明该类模块的版本<br>@see 参考转向，也就是相关主题<br>@since 从哪个版本开始增加的<br>@param 对方法中某参数的说明，如果没有参数就不能写<br>@return 对方法返回值的说明，如果方法的返回值类型是void就不能写<br>@exception 对方法可能抛出的异常进行说明 ，如果方法没有用throws显式抛出的异常就不能写<br>其中<br>@param @return 和 @exception 这三个标记都是只用于方法的。<br>@param的格式要求：@param 形参名 形参类型 形参说明<br>@return 的格式要求：@return 返回值类型 返回值说明<br>@exception的格式要求：@exception 异常类型 异常说明<br>@param和@exception可以并列多个</p>
+<h2 id="情况二"><a href="#情况二" class="headerlink" title="情况二"></a>情况二</h2><ul>
+<li>@Override: 限定重写父类方法, 该注解只能用于方法</li>
+<li>@Deprecated: 用于表示所修饰的元素(类, 方法等)已过时。通常是因为<br>所修饰的结构危险或存在更好的选择</li>
+<li>@SuppressWarnings: 抑制编译器警告</li>
+</ul>
+<p><strong>说明</strong>：为什么要用@Override？直接重写当然也可以，当用@Override的时候编译器会自动帮你检测你是否进行了重写，这也就为你的程序提供了一个保障。避免了重写的时候输错了重写的方法名，而导致并没有重写父类中的方法的情况。</p>
+<p>代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AnnotationTest</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="meta">@SuppressWarnings(&quot;unused&quot;)</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Deprecated</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>&#123;  <span class="comment">//在编译器中这种过时的的方法都会被画一条线</span></span><br><span class="line">		System.out.println(<span class="string">&quot;过时的方法&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;重写的toString方法()&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="自定义Annotation"><a href="#自定义Annotation" class="headerlink" title="自定义Annotation"></a>自定义Annotation</h1><p><strong>注意点</strong>：</p>
+<ul>
+<li>定义新的 Annotation 类型使用 @interface 关键字</li>
+<li>自定义注解自动继承了java.lang.annotation.Annotation接口</li>
+<li>Annotation 的成员变量在 Annotation 定义中以无参数方法的形式来声明。其方法名和返回值定义了该成员的名字和类型。我们称为配置参数。类型只能是<strong>八种基本数据类型、String类型、Class类型、enum类型Annotation类型、以上所有类型的数组</strong>。</li>
+<li>可以在定义 Annotation 的成员变量时为其指定初始值, 指定成员变量的初始值可使用 <strong>default 关键字</strong></li>
+<li>如果只有一个参数成员，建议使用参数名为value</li>
+<li><strong>如果定义的注解含有配置参数，那么使用时必须指定参数值，除非它有默认值</strong>。格式是“参数名 &#x3D; 参数值”，如果只有一个参数成员，且名称为value，可以省略“value&#x3D;”</li>
+<li>没有成员定义的 Annotation 称为<strong>标记</strong>; 包含成员变量的 Annotation 称为元数据 Annotation</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyAnnotation &#123;</span><br><span class="line"></span><br><span class="line">    String <span class="title function_">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个注解到底有什么作用，在反射和框架中会提到。<br><strong>自定义注解必须配上注解的信息处理流程才有意义</strong>。</p>
+<h1 id="JDK中的元注解"><a href="#JDK中的元注解" class="headerlink" title="JDK中的元注解"></a>JDK中的元注解</h1><p>在理解元注解之前我们先理解元数据。那么什么是元数据呢，我们可以先看看下面的一段代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String name = &quot;CSDN&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一个简单的赋值语句，在这个句子中我们可以说CSDN才是最主要的，他是真正我们想要的数据，而前面的String，name等这些东西都是起到一种修饰的作用，所以我们称它们为<strong>元数据</strong>。<strong>也就是说对现有数据进行修饰的数据</strong>。那么同理我们也可以知道元注解的意思。</p>
+<p><strong>元注解：对现有的注解进行解释说明的注解</strong></p>
+<p>JDK5.0提供了4个标准的meta-annotation(元注解)类型：</p>
+<ul>
+<li>Retention（一般自定义注解会指明）</li>
+<li>Target（一般自定义注解会指明）</li>
+<li>Documented（出现频率低）</li>
+<li>Inherited（出现频率低）</li>
+</ul>
+<h2 id="Retention"><a href="#Retention" class="headerlink" title="@Retention"></a>@Retention</h2><p>只能用于修饰一个 Annotation 定义, 用于指定该 Annotation 的生命周期, @Rentention 包含一个 RetentionPolicy 类型的成员变量, 使用@Rentention 时必须为该 value 成员变量指定值。<br><strong>注</strong>：这个RetentionPolicy是一个枚举类，它有三个对象分别是 SOURCE,CLASS,RUNTIME</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public enum RetentionPolicy&#123;</span><br><span class="line">	SOURCE,</span><br><span class="line">	CLASS,</span><br><span class="line">	RUNTIME</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@Rentention 成员变量的几个指定值：</p>
+<ul>
+<li>RetentionPolicy.SOURCE:在源文件中有效（即源文件保留），编译器直接丢弃这种策略的注释</li>
+<li>RetentionPolicy.CLASS:在class文件中有效（即class保留） ， 当运行 Java 程序时, JVM 不会保留注解。 <strong>这是默认值</strong>。</li>
+<li>RetentionPolicy.RUNTIME:在运行时有效（即运行时保留），当运行 Java 程序时, JVM 会保留注释。<strong>程序可以通过反射获取该注释</strong>。</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Retention(RetentionPolicy.SOURCE)</span><br><span class="line">@interface MyAnnotation1&#123; &#125;</span><br><span class="line"></span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@interface MyAnnotation2&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4893383a-b9ac-11ed-aee5-5cea1d84200c.png#pic_center"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4893383a-b9ac-11ed-aee5-5cea1d84200c.png#pic_center" alt="生命周期"></a><br>也就是说<strong>只有声明为RUNTIME生命周期的注解，才能通过反射获取</strong></p>
+<h2 id="Target"><a href="#Target" class="headerlink" title="@Target"></a>@Target</h2><p>用于修饰 Annotation 定义, 用于指定被修饰的 Annotation 能用于修饰哪些程序元素。 @Target 也包含一个名为 value 的成员变量。</p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/48cea679-b9ac-11ed-8678-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/48cea679-b9ac-11ed-8678-5cea1d84200c.png" alt="target"></a><br>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.SOURCE)</span><br><span class="line">public @interface SuppressWarnings &#123;········&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而在Target中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Target &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns an array of the kinds of elements an annotation type</span></span><br><span class="line"><span class="comment">     * can be applied to.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> an array of the kinds of elements an annotation type</span></span><br><span class="line"><span class="comment">     * can be applied to</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    ElementType[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个ElementType同样也是一个枚举类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">ElementType</span> &#123;</span><br><span class="line">    <span class="comment">/** Class, interface (including annotation type), or enum declaration */</span></span><br><span class="line">    TYPE,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Field declaration (includes enum constants) */</span></span><br><span class="line">    FIELD,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Method declaration */</span></span><br><span class="line">    METHOD,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Formal parameter declaration */</span></span><br><span class="line">    PARAMETER,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Constructor declaration */</span></span><br><span class="line">    CONSTRUCTOR,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Local variable declaration */</span></span><br><span class="line">    LOCAL_VARIABLE,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Annotation type declaration */</span></span><br><span class="line">    ANNOTATION_TYPE,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Package declaration */</span></span><br><span class="line">    PACKAGE,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Type parameter declaration</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span> 1.8</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    TYPE_PARAMETER,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Use of a type</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span> 1.8</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    TYPE_USE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Documented"><a href="#Documented" class="headerlink" title="@Documented"></a>@Documented</h2><p>用于指定被该元 Annotation 修饰的 Annotation 类将被javadoc 工具提取成文档。默认情况下，javadoc是不包括注解的。</p>
+<p><strong>注意</strong>：定义为Documented的注解必须设置Retention值为RUNTIME。</p>
+<h2 id="Inherited"><a href="#Inherited" class="headerlink" title="@Inherited"></a>@Inherited</h2><p>被它修饰的 Annotation 将具有继承性。如果某个类使用了被@Inherited 修饰的 Annotation, 则其子类将自动具有该注解。</p>
+<h1 id="JDK8中注解的新特性"><a href="#JDK8中注解的新特性" class="headerlink" title="JDK8中注解的新特性"></a>JDK8中注解的新特性</h1><ul>
+<li>可重复注解</li>
+<li>类型注解</li>
+</ul>
+<h2 id="可重复注解"><a href="#可重复注解" class="headerlink" title="可重复注解"></a>可重复注解</h2><p>例如现在我要给Person类添加两个同类型的注解MyAnnotation。<br>在JDK8以前：<br>要先定义一个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public @interface MyAnnotations &#123;</span><br><span class="line"></span><br><span class="line">    MyAnnotation[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@MyAnnotations(&#123;@MyAnnotation(value=&quot;hi&quot;),@MyAnnotation(value=&quot;hi&quot;)&#125;)</span><br><span class="line">class Person&#123;······&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也就是说相当于定义了一个数组可以把多个都装起来。</p>
+<p>而在JDK8以后，有了可重复注解的特性：</p>
+<ul>
+<li>① 在MyAnnotation上声明@Repeatable，成员值为MyAnnotations.class</li>
+<li>② MyAnnotation的Target和Retention等元注解与MyAnnotations相同。（如此编译时能通过，但发现在运行时不过，也就是说@Inherited也要相同）</li>
+</ul>
+<p>相关代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyAnnotations &#123;</span><br><span class="line"></span><br><span class="line">    MyAnnotation[] value();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Repeatable(MyAnnotations.class)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE,TYPE_PARAMETER,TYPE_USE&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyAnnotation &#123;</span><br><span class="line"></span><br><span class="line">    String <span class="title function_">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就可以实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@MyAnnotation(value=&quot;hi&quot;)</span><br><span class="line">@MyAnnotation(value=&quot;abc&quot;)</span><br><span class="line">class Person&#123;······&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="类型注解"><a href="#类型注解" class="headerlink" title="类型注解"></a>类型注解</h2><p>就是Target元注解新增了两个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Type parameter declaration</span><br><span class="line"> *</span><br><span class="line"> * @since 1.8</span><br><span class="line"> */</span><br><span class="line">TYPE_PARAMETER,</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Use of a type</span><br><span class="line"> *</span><br><span class="line"> * @since 1.8</span><br><span class="line"> */</span><br><span class="line">TYPE_USE</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ElementType.TYPE_PARAMETER 表示该注解能写在类型变量的声明语句中（如：泛型声明）</li>
+<li>ElementType.TYPE_USE 表示该注解能写在使用类型的任何语句中。</li>
+</ul>
+<p>例如下面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Generic</span>&lt;<span class="meta">@MyAnnotation</span> T&gt;&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span> <span class="keyword">throws</span> <span class="meta">@MyAnnotation</span> RuntimeException&#123;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;<span class="meta">@MyAnnotation</span> String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> (<span class="meta">@MyAnnotation</span> <span class="type">int</span>) <span class="number">10L</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第一个注解能去修饰泛型，就是因为Target中加入了TYPE_PARAMETER<br>后面三个注解能这么使用，是因为Target中加入了TYPE_USE。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@Repeatable(MyAnnotations.class)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE,TYPE_PARAMETER,TYPE_USE&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyAnnotation &#123;</span><br><span class="line"></span><br><span class="line">    String <span class="title function_">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="JUnit单元测试"><a href="#JUnit单元测试" class="headerlink" title="JUnit单元测试"></a>JUnit单元测试</h1><h2 id="测试分类"><a href="#测试分类" class="headerlink" title="测试分类"></a>测试分类</h2><p><strong>黑盒测试：</strong> 不需要写代码，给输入值，看程序是否能够输出期望的值。</p>
+<p><strong>白盒测试：</strong> 需要写代码的。关注程序具体的执行流程。</p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4924aa02-b9ac-11ed-9fa4-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4924aa02-b9ac-11ed-9fa4-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/496b7186-b9ac-11ed-a2e6-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/496b7186-b9ac-11ed-a2e6-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<h2 id="JUnit单元测试介绍"><a href="#JUnit单元测试介绍" class="headerlink" title="JUnit单元测试介绍"></a>JUnit单元测试介绍</h2><p>JUnit 是由 Erich Gamma 和 Kent Beck 编写的一个测试框架（regression testing framework），供Java开发人员编写单元测试之用。</p>
+<p><strong>JUnit测试是程序员测试，即所谓白盒测试，因为程序员知道被测试的软件如何（How）完成功能和完成什么样（What）的功能。</strong></p>
+<p>要使用JUnit，必须在项目的编译路径中<code>引入JUnit的库</code>，即相关的.class文件组成的jar包。jar就是一个压缩包，压缩包都是开发好的第三方（Oracle公司第一方，我们自己第二方，其他都是第三方）工具类，都是以class文件形式存在的。</p>
+<h2 id="引入本地JUnit-jar"><a href="#引入本地JUnit-jar" class="headerlink" title="引入本地JUnit.jar"></a>引入本地JUnit.jar</h2><p>第1步：在项目中File-Project Structure中操作：添加Libraries库</p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4997ad64-b9ac-11ed-961f-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4997ad64-b9ac-11ed-961f-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/49d6b5de-b9ac-11ed-b9ec-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/49d6b5de-b9ac-11ed-b9ec-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p>其中，junit-libs包内容如下：</p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4a04176a-b9ac-11ed-8669-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4a04176a-b9ac-11ed-8669-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<blockquote>
+<p>一定要注意Junit模块支持需要两个文件：hamcrest&amp;JUnit，如果少了hamcrest的jar包会报java.lang.Exception: No tests found matching</p>
+</blockquote>
+<p>第2步：选择要在哪些module中应用JUnit库</p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4a3ec0aa-b9ac-11ed-94d7-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4a3ec0aa-b9ac-11ed-94d7-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p>第3步：检查是否应用成功</p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4a7e99ff-b9ac-11ed-98bf-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4a7e99ff-b9ac-11ed-98bf-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p><strong>注意Scope：选择Compile，否则编译时，无法使用JUnit。</strong></p>
+<p>第4步：下次如果有新的模块要使用该libs库，这样操作即可</p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4aba48a7-b9ac-11ed-838e-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4aba48a7-b9ac-11ed-838e-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4af7b744-b9ac-11ed-bcb9-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4af7b744-b9ac-11ed-bcb9-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4b326b8f-b9ac-11ed-b863-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4b326b8f-b9ac-11ed-b863-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4b6ee8fc-b9ac-11ed-82b3-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4b6ee8fc-b9ac-11ed-82b3-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<h2 id="编写和运行-Test单元测试方法"><a href="#编写和运行-Test单元测试方法" class="headerlink" title="编写和运行@Test单元测试方法"></a>编写和运行@Test单元测试方法</h2><p>JUnit4版本，要求@Test标记的方法必须满足如下要求：</p>
+<ul>
+<li>所在的类必须是public的，非抽象的，包含唯一的无参构造器。</li>
+<li>@Test标记的方法本身必须是public，非抽象的，非静态的，void无返回值，()无参数的。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.junit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestJUnit</span> &#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test01</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;TestJUnit.test01&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test02</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;TestJUnit.test02&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test03</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;TestJUnit.test03&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4b9ddcd0-b9ac-11ed-841f-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4b9ddcd0-b9ac-11ed-841f-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<h2 id="设置执行JUnit用例时支持控制台输入"><a href="#设置执行JUnit用例时支持控制台输入" class="headerlink" title="设置执行JUnit用例时支持控制台输入"></a>设置执行JUnit用例时支持控制台输入</h2><p><strong>1. 设置数据：</strong></p>
+<p>默认情况下，在单元测试方法中使用Scanner时，并不能实现控制台数据的输入。需要做如下设置：</p>
+<p>在<code>**idea**64.exe.vmoptions配置文件</code>中加入下面一行设置，重启idea后生效。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">-Deditable.java.test.console</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 配置文件位置：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4bd9a975-b9ac-11ed-adbc-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4bd9a975-b9ac-11ed-adbc-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4c1e3f3f-b9ac-11ed-be42-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4c1e3f3f-b9ac-11ed-be42-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+<p>添加完成之后，重启IDEA即可。</p>
+<p><strong>3. 如果上述位置设置不成功，需要继续修改如下位置</strong></p>
+<p>修改位置1：IDEA安装目录的bin目录（例如：<code>D:\develop_tools\IDEA\IntelliJ IDEA 2022.1.2\bin</code>）下的idea64.exe.vmoptions文件。</p>
+<p>修改位置2：C盘的用户目录<code>C:\Users\用户名\AppData\Roaming\JetBrains\IntelliJIdea2022.1</code> 下的idea64.exe.vmoptions&#96;件。</p>
+<h2 id="定义test测试方法模板"><a href="#定义test测试方法模板" class="headerlink" title="定义test测试方法模板"></a>定义test测试方法模板</h2><p>选中自定义的模板组，点击”+”（1.Live Template）来定义模板。</p>
+<p><a target="_blank" rel="noopener" href="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4c58f8fc-b9ac-11ed-9556-5cea1d84200c.png"><img src="https://blog-1305504063.cos.ap-beijing.myqcloud.com/4c58f8fc-b9ac-11ed-9556-5cea1d84200c.png" alt="在这里插入图片描述"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-socket网络编程实战（java）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -257,6 +520,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -382,6 +656,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -463,6 +748,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -517,8 +813,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h3><p>这次了解我上面只有一个HelloWord的时候，为什么不让右键新建，<strong>因为需要命令生成啊，铁汁！</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PLAINTEXT</span><br><span class="line">npm i hexo-deployer-git</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo new post &quot;新建博客文章名&quot;</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo cl &amp;&amp; hexo g  &amp;&amp; hexo s</span><br><span class="line">远端提交</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+        <h3 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PLAINTEXT</span><br><span class="line">npm i hexo-deployer-git</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo new post &quot;新建博客文章名&quot;</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo cl &amp;&amp; hexo g  &amp;&amp; hexo s</span><br><span class="line">远端提交</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
       
 
@@ -652,6 +947,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
