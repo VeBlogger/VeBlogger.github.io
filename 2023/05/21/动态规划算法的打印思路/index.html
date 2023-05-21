@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>动态规划算法的打印思路 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="零钱兑换I and  零钱兑换II(1)零钱兑换I：贪心算法 伪代码描述思想： 完全背包之求凑满背包的最少物品数: 容量-&gt;amount; 物品重量-&gt;coins[i]; 价值-&gt;1; 优化目标-&gt;求恰好凑满背包的物品最小价值 1.状态定义:dp[j]为凑满容量为j的背包所需最少物品数 2.状态转移:考虑coins[i]     2.1 当j&lt;coins[i]时:装不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划算法的打印思路">
+<meta property="og:url" content="http://example.com/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="零钱兑换I and  零钱兑换II(1)零钱兑换I：贪心算法 伪代码描述思想： 完全背包之求凑满背包的最少物品数: 容量-&gt;amount; 物品重量-&gt;coins[i]; 价值-&gt;1; 优化目标-&gt;求恰好凑满背包的物品最小价值 1.状态定义:dp[j]为凑满容量为j的背包所需最少物品数 2.状态转移:考虑coins[i]     2.1 当j&lt;coins[i]时:装不">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-21T06:39:26.000Z">
+<meta property="article:modified_time" content="2023-05-21T06:42:36.527Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Leetcode笔记">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,36 +155,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-动态规划算法的打印思路" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/" class="archive-article-date">
-  	<time datetime="2023-05-21T06:39:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/">动态规划算法的打印思路</a>
+    <h1 class="article-title" itemprop="name">
+      动态规划算法的打印思路
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/" class="archive-article-date">
+  	<time datetime="2023-05-21T06:39:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="零钱兑换I-and-零钱兑换II"><a href="#零钱兑换I-and-零钱兑换II" class="headerlink" title="零钱兑换I and  零钱兑换II"></a>零钱兑换I and  零钱兑换II</h3><h4 id="1-零钱兑换I："><a href="#1-零钱兑换I：" class="headerlink" title="(1)零钱兑换I："></a>(1)零钱兑换I：</h4><p>贪心算法</p>
+<p>伪代码描述思想：</p>
+<pre><code>完全背包之求凑满背包的最少物品数:
+容量-&gt;amount; 物品重量-&gt;coins[i]; 价值-&gt;1; 优化目标-&gt;求恰好凑满背包的物品最小价值
+1.状态定义:dp[j]为凑满容量为j的背包所需最少物品数
+2.状态转移:考虑coins[i]
+    2.1 当j&lt;coins[i]时:装不下,继承上一个dp[j]的值
+    2.2 当j&gt;=coins[i]时:可以装得下,可以选择装或者不装中价值小的(物品数小的)进行转移
+        即:dp[j]=min(dp[j],dp[j-coins[i]+1])
+3.初始化:容量为0,最少要装0个就可以装满-&gt;dp[0]=0,看转移方程,其他的要初始化为Integer.MAX_VALUE
+4.遍历顺序:这里求最少的物品数,因此排列与组合均可,这里先物品后容量,物品顺序无所谓,容量必须正序(完全背包)
+5.返回形式:返回如果dp[amount]有转移直接返回,如果没有转移返回-1
+</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">coinChange</span><span class="params">(<span class="type">int</span>[] coins, <span class="type">int</span> amount)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[amount + <span class="number">1</span>];</span><br><span class="line">        Arrays.fill(dp, Integer.MAX_VALUE);</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> coin : coins) &#123;</span><br><span class="line">            <span class="comment">// 正序,j从coin开始即可</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> coin; j &lt;= amount; j++) &#123;</span><br><span class="line">                <span class="comment">// 前面dp值在有计算过的基础上才能转移</span></span><br><span class="line">                <span class="keyword">if</span>(dp[j - coin] != Integer.MAX_VALUE) dp[j] = Math.min(dp[j], dp[j - coin] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 有转移直接返回,没有转移说明凑不成返回-1</span></span><br><span class="line">        <span class="keyword">return</span> dp[amount] == Integer.MAX_VALUE ? -<span class="number">1</span> : dp[amount];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>动态规划背包问题</p>
+<p>​           递归公式-&gt;遍历顺序</p>
+</blockquote>
+<h4 id="2-零钱兑换II：打印零钱兑换组合："><a href="#2-零钱兑换II：打印零钱兑换组合：" class="headerlink" title="(2)零钱兑换II：打印零钱兑换组合："></a>(2)零钱兑换II：打印零钱兑换组合：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="comment">//amou:未兑换为零钱的金额，step：步骤数组，len：步骤数，coins：零钱数组，m：零钱种类数，k：用于跳过重复组合的标志</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">change</span><span class="params">(<span class="type">int</span> amou , <span class="type">int</span> *steps , <span class="type">int</span> len , <span class="type">int</span> *coins, <span class="type">int</span> m ,<span class="type">int</span> k)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(amou == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span> ; i &lt; len ; i++ )&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span> , steps[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = k ; j &lt; m ; j++ )&#123;</span><br><span class="line">            <span class="keyword">if</span>(amou &gt;= coins[j])&#123;</span><br><span class="line"></span><br><span class="line">                steps[len] = coins[j];</span><br><span class="line"></span><br><span class="line">                change(amou-coins[j] , steps , len+<span class="number">1</span> , coins , m, j );</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">change</span><span class="params">(<span class="type">int</span> amount, <span class="type">int</span>* coins, <span class="type">int</span> coinsSize)</span> &#123;</span><br><span class="line">    <span class="type">int</span> dp[amount + <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; coinsSize; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = coins[i]; j &lt;= amount; j++) &#123;</span><br><span class="line">            dp[j] += dp[j - coins[i]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[amount];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n=<span class="number">5</span>;</span><br><span class="line">    <span class="type">int</span> steps[n];</span><br><span class="line">    <span class="type">int</span> coins[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>&#125;;</span><br><span class="line">    <span class="type">int</span> count = change(n,coins,<span class="number">3</span>) ;</span><br><span class="line">    change(n,steps,<span class="number">0</span>,coins,<span class="number">3</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d兑换为零钱有以上%d种组合情况&quot;</span>,n,count);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="爬楼梯问题以及如何将组合数打印出来"><a href="#爬楼梯问题以及如何将组合数打印出来" class="headerlink" title="爬楼梯问题以及如何将组合数打印出来"></a>爬楼梯问题以及如何将组合数打印出来</h3><blockquote>
+<p>使用递归函数打印所有可能的路径。我们可以修改动态编程解决方案，以跟踪到达每个楼梯所需的步骤。然后，我们可以使用递归函数根据所采取的步骤打印所有可能的路径。</p>
+<p><strong>printPaths</strong>函数有三个参数：n是要爬的剩余楼梯数，steps是迄今为止所走步骤的数组，len是步骤数组的长度。我们从一个空的steps数组开始，调用<strong>printPaths</strong>函数，其中n等于楼梯总数。根据下一步是1还是2，函数递归调用自身，n减少1或2。当n达到0时，我们打印步骤数组。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line">    <span class="type">void</span> <span class="title function_">printPaths</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> *steps, <span class="type">int</span> len)</span> &#123;<span class="comment">//递归</span></span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, steps[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n &gt;= <span class="number">1</span>) &#123;   <span class="comment">//一步</span></span><br><span class="line">        steps[len] = <span class="number">1</span>;</span><br><span class="line">        printPaths(n<span class="number">-1</span>, steps, len+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n &gt;= <span class="number">2</span>) &#123;  <span class="comment">//两步</span></span><br><span class="line">        steps[len] = <span class="number">2</span>;</span><br><span class="line">        printPaths(n<span class="number">-2</span>, steps, len+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;            </span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">climbStairs</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> dp[n+<span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        dp[i] = dp[i<span class="number">-1</span>] + dp[i<span class="number">-2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> steps[n];</span><br><span class="line">    printPaths(n, steps, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    climbStairs(<span class="number">10</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="tip：java参数传递与c参数传递"><a href="#tip：java参数传递与c参数传递" class="headerlink" title="tip：java参数传递与c参数传递"></a>tip：java参数传递与c参数传递</h3><p>java中基本数据类型传值时不会影响主方法中的定义值的；而作为引用数据类型的数组（包括面向对象中的对象作为方法参数的时候）则会受到影响。</p>
+<p>c语言中：</p>
+<p><strong>sizeof(a)无法得到数组的大小。为什么会这样？因为把数组作为参数传递给函数时，实际上只有数组的首地址作为指针传递给了函数。换句话说，在函数</strong> <em>*<em>*定义中的int a[]*</em>*<em>等价于*</em>*<em>int *a*</em>*<em>。在只有地址信息的情况下，是无法知道数组里有多少个元素*</em>*</em> <strong>的。</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,198 +245,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEj0lEQVR42u3aS27bQBAFQN//0s4mO4f2e91UoKGLK0ExxZligOnfx0d8fX658rtm31xdV/d+/Xx1b77++sKECRMmTG/JlCzrM7hmEAlx8gs5RL4vTJgwYcL0JKb9QnP65Ji/2sxs8/m+Lr/HhAkTJky/jCnJEJNvkqP9rnAkT4MxYcKECdNvZkqO3vyw3xSXk9LzrOCLCRMmTJiex7RpAe6x8l+4q5j7wlo4JkyYMGF6M6Z2BOdJn18y34QJEyZMmN6Gad90bEurbRKbbGkWXhS7xoQJEyZMxzLNlnJXy3AWjrSs7QDQ5V9iwoQJE6ZjmerGXrCBNotsi855UJIUr+uKOCZMmDBhOoopWUQbFuTH9uaQzuFmWFGMgAkTJkyYjmJqR1jyRDdnaseA7hoJipJeTJgwYcJ0FFNbKp21LWdbzTe/fz0//D4mTJgwYTqWaTbOkpduc478CM8P/tmqLl8YJkyYMGE6kKm9uW0fJqXhTXa5KTfnT8SECRMmTOcytWOdLUTbekzunTUmZ8ENJkyYMGF6BtNsLGZWft20FffpdJtm/xBDYcKECROmt2faNCD3wcE+Sb6hSZmsGRMmTJgwHc7UFk/zdmA7NtqWlb8PVjbhwj/6vZgwYcKE6UCmttXXjpMm7cZ9M3X2a/W9mDBhwoTpQKa29ThLZT/Ka9ZezQvT9egSJkyYMGE6lmmWcLaJcd7sfEUQkLPWZJgwYcKE6RCmu47wu8q1+bHdHv+rXWDChAkTpmOZ8iTz3mLuJnnOS9KzkSNMmDBhwvQ8pmSTbQszP7Bnx3w+0rp/FiZMmDBhOpGpPfKTReR8eUCQBxxJQpsHBH8/Y8KECROmRzDlRdK8nTnDzX8zb2TOCr71xjBhwoQJ05sx5Yd6XrodHrqj15CUm9uSbtT1xYQJEyZMRzGtjsnRX+7HWGfNyNlYLSZMmDBhegZTW5CdLTovGc/WsE/FfyhtY8KECROmo5g2i2gDgs3oTz4Y1KboUVsUEyZMmDAdy5Q0EfMFJW3Ftj3ZDu7MSsDJfx1MmDBhwnQi0z7d3aSv3x/GswDiroL15XwTJkyYMGE6kCkPC/Lk9q5fmxFvwpTLgAATJkyYMD2CabPV+vFlYJE/JS/XRriYMGHChOlwprx4uinIJof0PhBJEu+6XYoJEyZMmA5n+n7bs1LprPyaF3zzxHhWVi4mgDBhwoQJ01FMmyO8HcR5dZE3DyDqgAATJkyYMB3L1BZwkwO+TZKTNeS4s5d6WQvHhAkTJkzHMrUtyRalbZrum6ntN5efMWHChAnTsUz7I3zfPsyLv3cl1e3rwYQJEyZM5zL9zy21Jd27jvn995gwYcKE6Vym/NoUZBP6fGBoFhbMmq+YMGHChOkZTO028uM/T0Tb5+YjPrOAABMmTJgwPY+pHZG5C2JWfm2brJtnYcKECROm38w0K9ruD/V9C7ZeMyZMmDBh+jVMbZKc/Gt+1yvCl6iJiwkTJkyYDmealUrzNHIWFtz1kmYl4GEtHBMmTJgwvRnTqvS5visfo9kUiJPEeDXZhAkTJkyY3pHpDzB/v1Ae/pbLAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" class="archive-article-date">
-  	<time datetime="2023-05-21T06:24:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java注解机制与junit单元测试框架</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">Java注解机制与junit单元测试框架</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/24/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%88java%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2023-04-24T11:19:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/24/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%88java%EF%BC%89/">socket网络编程实战（java）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/24/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6-logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2023-04-24T02:53:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/24/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6-logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">日志框架:logback快速入门</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/22/java%E7%A7%BB%E4%BD%8D%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-04-21T16:08:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/22/java%E7%A7%BB%E4%BD%8D%E8%A1%A8%E8%BE%BE%E5%BC%8F/">java移位表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/21/%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83/" class="archive-article-date">
-  	<time datetime="2023-04-21T13:48:02.560Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/21/%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83/">发布博客！</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -405,8 +367,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
