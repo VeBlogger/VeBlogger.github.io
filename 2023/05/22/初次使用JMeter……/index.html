@@ -6,15 +6,40 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>初次使用JMeter…… | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="初次使用JMeter……为了测试自己的接口在并发请求下表现如何，不得不快速入门了Apache JMeter。之前用过Postman，Postman的界面更友好美观，如果只是简单测试下接口的响应，强烈推荐Postman，但它确实并不支持并发测试。（至少我搜到的所谓postman并发测试教程都是错的，runner是阻塞排队执行，并不是并发。） 本文主要分为安装JDK、安装JMeter、JMeter的使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初次使用JMeter……">
+<meta property="og:url" content="http://example.com/2023/05/22/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8JMeter%E2%80%A6%E2%80%A6/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="初次使用JMeter……为了测试自己的接口在并发请求下表现如何，不得不快速入门了Apache JMeter。之前用过Postman，Postman的界面更友好美观，如果只是简单测试下接口的响应，强烈推荐Postman，但它确实并不支持并发测试。（至少我搜到的所谓postman并发测试教程都是错的，runner是阻塞排队执行，并不是并发。） 本文主要分为安装JDK、安装JMeter、JMeter的使">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-479f11301ccaeb883171cc16bcbea064_720w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-7ed749951a50276aaeb9b9d7dbe317df_720w.webp">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-1d7adcaaa8b11253f3c6dc6fac93e845_720w.webp">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-7f1860a5f7e4cde708770c1aba6c453a_720w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-03e2603e37be289f456385efb4a6cd04_720w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-2fe8db017660e79429726a50f0be0f18_720w.webp">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-9306145ad6655ca9f00df050cc4e04da_720w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-aac3af18fbcc0d4583eca1f1e3d09947_720w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-4a69151d7aab8974ad58d11515381dec_720w.webp">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-9a35a0338b66996c20854d2cb3ab99d5_720w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-4aa544f0bf20b03bc2bd1d4f3302da63_720w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-74cd954b6070253f01f4b2a08cabdf23_720w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-a4c3e662fa3f8d2cc6cbed96215922c0_720w.webp">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-2ab95cbfe7f19d281f7d2282abbe6daa_720w.webp">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-35ec8249054ba3e144572258ef76342d_720w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-73441bcfea2da5c9ddaff5ac03c238b4_720w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-5a9899d575eaf3043a1a0b69c4e31688_720w.webp">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-81e455383f9f0b8c9a3022f7a3821eba_720w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-e007193e13ef2b442d4616b65a8bbca3_720w.webp">
+<meta property="article:published_time" content="2023-05-22T10:46:05.000Z">
+<meta property="article:modified_time" content="2023-05-22T10:47:16.462Z">
 <meta property="article:author" content="Veblogger">
+<meta property="article:tag" content="开发工具">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-479f11301ccaeb883171cc16bcbea064_720w.webp">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -132,36 +157,130 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-初次使用JMeter……" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/22/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8JMeter%E2%80%A6%E2%80%A6/" class="archive-article-date">
-  	<time datetime="2023-05-22T10:46:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/22/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8JMeter%E2%80%A6%E2%80%A6/">初次使用JMeter……</a>
+    <h1 class="article-title" itemprop="name">
+      初次使用JMeter……
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2023/05/22/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8JMeter%E2%80%A6%E2%80%A6/" class="archive-article-date">
+  	<time datetime="2023-05-22T10:46:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="初次使用JMeter……"><a href="#初次使用JMeter……" class="headerlink" title="初次使用JMeter……"></a>初次使用JMeter……</h1><p>为了测试自己的接口在并发请求下表现如何，不得不快速入门了Apache JMeter。之前用过Postman，Postman的界面更友好美观，如果只是简单测试下接口的响应，强烈推荐Postman，但它确实并不支持并发测试。（至少我搜到的所谓postman并发测试教程都是错的，runner是阻塞排队执行，并不是并发。）</p>
+<p>本文主要分为<strong>安装JDK、安装JMeter、JMeter的使用</strong>三大部分，其中JMeter的使用包括如下5个部分。全文操作下来仅需20min-1h，即可完成JMeter入门。</p>
+<ul>
+<li><p>添加线程组</p>
+</li>
+<li><p>添加HTTP请求</p>
+</li>
+<li><p>添加结果树视图&#x2F;聚合视图</p>
+</li>
+<li><p>执行性能测试&#x2F;并发测试</p>
+</li>
+<li><p>测试报告解读</p>
+<span id="more"></span></li>
+</ul>
+<h2 id="Part-1-安装JDK"><a href="#Part-1-安装JDK" class="headerlink" title="Part 1. 安装JDK"></a>Part 1. 安装JDK</h2><p>由于JMeter是纯Java开发的软件，首先需要安装Java 8环境。</p>
+<h3 id="1-1-JDK下载"><a href="#1-1-JDK下载" class="headerlink" title="1.1 JDK下载"></a><strong>1.1</strong> JDK<strong>下载</strong></h3><blockquote>
+<p>推荐使用网盘下载，因为官网不知道何时起需要注册才能下载了。注册流程较为繁琐。</p>
+<p>方法1：网盘下载：</p>
+<p>链接：<a href="https://link.zhihu.com/?target=https://pan.baidu.com/s/1iVxsnX25mvbNia8-_bzIVg">https://pan.baidu.com/s/1iVxsnX25mvbNia8-_bzIVg</a></p>
+<p>提取码：utnx</p>
+</blockquote>
+<p><img src="https://pic1.zhimg.com/80/v2-479f11301ccaeb883171cc16bcbea064_720w.webp" alt="img"></p>
+<p>方法2：官网下载：</p>
+<p>官网地址：<a href="https://link.zhihu.com/?target=https://www.oracle.com/technetwork/java/javase/downloads/index.html">Java SE - Downloads</a>，下拉选择Download JDK。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-7ed749951a50276aaeb9b9d7dbe317df_720w.webp" alt="img"></p>
+<p>在转跳的页面中，<strong>一定要先选择 Accept License Agreement</strong>接受许可要求，再选择对应版本，我的电脑系统为64位Windows，选择最后一个。最后在跳出的登录页面登陆成功后方可下载。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-1d7adcaaa8b11253f3c6dc6fac93e845_720w.webp" alt="img"></p>
+<h3 id="1-2-JDK的安装"><a href="#1-2-JDK的安装" class="headerlink" title="1.2 JDK的安装"></a><strong>1.2 JDK的安装</strong></h3><p>安装没有什么问题，一路狂点”Next下一步”就好了。</p>
+<h3 id="1-3-JDK的环境变量（可跳过）"><a href="#1-3-JDK的环境变量（可跳过）" class="headerlink" title="1.3 JDK的环境变量（可跳过）"></a>1.3 JDK的环境变量（可跳过）</h3><p>如果是默认方式安装一般会配置好环境变量，如果不放心可以自己查看下是否含有…….\Oracle\Java\javapath路径。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-7f1860a5f7e4cde708770c1aba6c453a_720w.webp" alt="img"></p>
+<p><img src="https://pic1.zhimg.com/80/v2-03e2603e37be289f456385efb4a6cd04_720w.webp" alt="img"></p>
+<h2 id="Part-2-安装JMeter"><a href="#Part-2-安装JMeter" class="headerlink" title="Part 2. 安装JMeter"></a>Part 2. 安装JMeter</h2><h3 id="2-1-JMeter的下载"><a href="#2-1-JMeter的下载" class="headerlink" title="2.1 JMeter的下载"></a>2.1 JMeter的下载</h3><p>直接去官网下载最新版本的zip即可。</p>
+<p>官网下载地址：<a href="https://link.zhihu.com/?target=http://jmeter.apache.org/download_jmeter.cgi">http://jmeter.apache.org/download_jmeter.cgi</a></p>
+<p><img src="https://pic1.zhimg.com/80/v2-2fe8db017660e79429726a50f0be0f18_720w.webp" alt="img"></p>
+<h3 id="2-2-JMeter的启动"><a href="#2-2-JMeter的启动" class="headerlink" title="2.2 JMeter的启动"></a>2.2 JMeter的启动</h3><p>将zip解压到你想要的位置。</p>
+<p>进入解压后的bin目录，双击jmeter.bat文件即可启动。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-9306145ad6655ca9f00df050cc4e04da_720w.webp" alt="img"></p>
+<p>会先打开一个cmd窗口，然后才是软件界面，如果关闭该cmd窗口软件也会关闭。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-aac3af18fbcc0d4583eca1f1e3d09947_720w.webp" alt="img"></p>
+<h2 id="Part-3-JMeter的使用"><a href="#Part-3-JMeter的使用" class="headerlink" title="Part 3. JMeter的使用"></a>Part 3. JMeter的使用</h2><h3 id="3-1-切换为中文简体界面（可选）"><a href="#3-1-切换为中文简体界面（可选）" class="headerlink" title="3.1 切换为中文简体界面（可选）"></a>3.1 切换为中文简体界面（可选）</h3><p>Options-Choose Language-Chinese</p>
+<p><img src="https://pic1.zhimg.com/80/v2-4a69151d7aab8974ad58d11515381dec_720w.webp" alt="img"></p>
+<p>由于我这版本的中文界面字体太粗看着很难受，我还是以英文界面为例说明，同时附上中文翻译。</p>
+<h3 id="3-2-添加线程组"><a href="#3-2-添加线程组" class="headerlink" title="3.2 添加线程组"></a>3.2 添加线程组</h3><p>右键点击“Test Plan测试计划”-“Add添加”-“Threads(Users)线程(用户)”-“Thread Group线程组”</p>
+<p><img src="https://pic2.zhimg.com/80/v2-9a35a0338b66996c20854d2cb3ab99d5_720w.webp" alt="img"></p>
+<p>这里可以配置线程组名称、线程数、循环次数、调度器等参数，如做2次20个并发的测试，将线程数改为20，循环数改为2即可。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-4aa544f0bf20b03bc2bd1d4f3302da63_720w.webp" alt="img"></p>
+<h3 id="3-3-添加HTTP请求"><a href="#3-3-添加HTTP请求" class="headerlink" title="3.3 添加HTTP请求"></a>3.3 添加HTTP请求</h3><p>JMeter的功能其实很强大，但此处我们只对HTTP方法做测试。</p>
+<p>右键点击“Thread Group线程组” - “Add添加”-“Sampler” - “HTTP Request”</p>
+<p><img src="https://pic4.zhimg.com/80/v2-74cd954b6070253f01f4b2a08cabdf23_720w.webp" alt="img"></p>
+<p>以172.12.123.183:9999&#x2F;test&#x2F;v1为例进行下图的参数填写。</p>
+<p><strong>协议：</strong>向目标服务器发送HTTP请求协议，可以是HTTP或HTTPS，默认为HTTP</p>
+<p><strong>服务器名称或IP ：</strong>HTTP请求发送的目标服务器名称或IP，格式如172.12.123.183</p>
+<p><strong>端口号：</strong>目标服务器的端口号，默认为80 ，此例为9999</p>
+<p><strong>方法：</strong>发送HTTP请求的方法，包括GET、POST、HEAD、PUT等。</p>
+<p><strong>路径：</strong>去掉服务器地址、端口后剩余部分，此例为&#x2F;test&#x2F;v1</p>
+<p><strong>编码方式：</strong>默认为ISO-8859-1，如请求中所传参数中包含中文，填写utf-8</p>
+<p><img src="https://pic1.zhimg.com/80/v2-a4c3e662fa3f8d2cc6cbed96215922c0_720w.webp" alt="img"></p>
+<p><strong>在请求中添加参数：</strong></p>
+<p>如需在请求中发送参数，注意参数含中文时需要勾选“URL Encode编码”，并在编码方式填写utf-8。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-2ab95cbfe7f19d281f7d2282abbe6daa_720w.webp" alt="img"></p>
+<p><strong>在请求中添加文件参数（图片&#x2F;音频&#x2F;视频等）:</strong></p>
+<p>如需在请求中添加文件作为参数，选择Files Upload文件上传，点击Browser进行文件选择，在Parameter Name中填入参数名，在MIME Type中选择对应的MIME类型。如png图片对应为image&#x2F;png，jpg为image&#x2F;png，mp4为video&#x2F;mp4。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-35ec8249054ba3e144572258ef76342d_720w.webp" alt="img"></p>
+<h3 id="3-4-添加结果树视图-x2F-聚合视图"><a href="#3-4-添加结果树视图-x2F-聚合视图" class="headerlink" title="3.4 添加结果树视图&#x2F;聚合视图"></a>3.4 添加结果树视图&#x2F;聚合视图</h3><p>右键点击“Thread线程组”-“Add添加”-“Listener监听器”-“View Results Tree结果树视图”及“Summary Report聚合视图” 。具体的指标含义在最后一节中再介绍，此处只要无脑添加一下即可。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-73441bcfea2da5c9ddaff5ac03c238b4_720w.webp" alt="img"></p>
+<h3 id="3-5-执行性能测试-x2F-并发测试"><a href="#3-5-执行性能测试-x2F-并发测试" class="headerlink" title="3.5 执行性能测试&#x2F;并发测试"></a>3.5 执行性能测试&#x2F;并发测试</h3><p>点击Thread Group线程组，根据自己的需求设置参数：线程数，循环次数，持续时间等，下图设置并发数为20，循环数为2。按上方的绿色小三角即可运行，按右侧的扫帚图标即可清除历史记录。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-5a9899d575eaf3043a1a0b69c4e31688_720w.webp" alt="img"></p>
+<h3 id="3-6-测试报告解读"><a href="#3-6-测试报告解读" class="headerlink" title="3.6 测试报告解读"></a>3.6 测试报告解读</h3><p><strong>结果树视图：</strong></p>
+<p>在结果树视图可以看到各个请求的具体响应结果，Reponse data-Response Body里可以看到请求的响应内容，也可以查看获取的html界面。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-81e455383f9f0b8c9a3022f7a3821eba_720w.webp" alt="img"></p>
+<p><strong>聚合视图：</strong></p>
+<p>聚合视图则是对并发测试最好的分析报告。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-e007193e13ef2b442d4616b65a8bbca3_720w.webp" alt="img"></p>
+<p>一般而言，并发测试重点关注的数据有： Samples请求数，Average平均响应时间，Min最小响应时间，Max最大响应时间，Error%错误率及Throughput吞吐量。其中，<strong>Error%错误率表示</strong>错误请求数&#x2F;请求总数，<strong>Throughput吞吐量</strong>表示单位时间完成的请求数。</p>
+<p>除了<strong>结果树视图</strong>和<strong>聚合视图</strong>，JMeter还提供了很多其他的报告种类，大家可以自己在Lister监听器中尝试添加使用。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -173,316 +292,135 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJklEQVR42u3aS27bQBAFQN//0gqQVQJHznvdhCCOiivBFodTw0WrP19f8fX4fX3//Odfnn3n8e2arZ886+ILGxsb+ybsx49XwnhGyg9rs/7sXmxsbOzz2G1QyQPMJhwmoSvZJzY2Njb2/pH5vcnBYWNjY2NvAlhe9JkVkvLja+/FxsbGPpudFJV+fmSbWszC5FUFKWxsbOyT2JtG77t9flF/GxsbG/tt2I/RlYSQtqi0LxgV+8fGxsY+iN2W42dBriUlpaj8cIveAjY2NvbN2UlgyENXWxhqC1XtAT0NYNjY2NgfwM5L/20lpz3oWUvj6f6xsbGxD2LvH79JRTaN3vxVRa8HGxsb+4bs1xT9Z2M69bvKQyY2Njb2cezZhvImwVUN2jq1yHMvbGxs7Juz2+XyMZp2tX1Bqo5s2NjY2Ieyr6pOtaM5ebm/DW/12CU2Njb2Tdiz5OHaBsD+gPInPs3DsLGxsW/LTgLGfouzoLgZ8fnPq8LGxsY+iD1bKKe2250lNheXmbCxsbFvyC6ylgW+HcqZlY2KtjQ2Njb2EewNKX9Mu908pRm+QmxsbOxD2Xl6MAsqbQFrNkiUJD/Y2NjYJ7HbYs1+o+1Qzn4dbGxs7E9gzxqubXM3b7vO2s+bJ2JjY2Ofwc43nYe3WTjZl5mK1i82Njb2cex88LFtG1xVNmqTpXpGCRsbG/uG7M0P/Zy6aTm0Ya8e3MHGxsa+Obv++R40dPPUJW857AtM2NjY2GezZ4nKrOifrNmWk2YNY2xsbOxT2avxl7Lt+sqxnlVPGBsbG/vt2UkISZKQdqxn8/18D9jY2NifwM5L7fmis1HOfeBsW8jY2NjYZ7Pz5fImQZtg1LnUvhmAjY2NfRP2o7xmqUt+uHkpvx3u/Ou/2NjY2AexZ2X9WcjJg2KbirQjPtjY2NjnsWepQptI5EWr/N6koRv1Q7CxsbGPYM+au5sGbRsy93UkbGxsbOxZG3h2lMne2jGdf6Qi2NjY2B/Gzss6bR0rZ7RDP08bA9jY2NjHsfcPnh3Qfg/5+tjY2NinsveN3k3ykHw/T4HqMIaNjY19b/YvMnvJXeN+0g0AAAAASUVORK5CYII=" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2023-05-21T17:46:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot项目分层与层级理解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/">SpringBoot项目分层与层级理解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8JMeter%E2%80%A6%E2%80%A6"><span class="toc-number">1.</span> <span class="toc-text">初次使用JMeter……</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-1-%E5%AE%89%E8%A3%85JDK"><span class="toc-number">1.1.</span> <span class="toc-text">Part 1. 安装JDK</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-JDK%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 JDK下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-JDK%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 JDK的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-JDK%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%88%E5%8F%AF%E8%B7%B3%E8%BF%87%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 JDK的环境变量（可跳过）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-2-%E5%AE%89%E8%A3%85JMeter"><span class="toc-number">1.2.</span> <span class="toc-text">Part 2. 安装JMeter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-JMeter%E7%9A%84%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 JMeter的下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-JMeter%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 JMeter的启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-3-JMeter%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">Part 3. JMeter的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%88%87%E6%8D%A2%E4%B8%BA%E4%B8%AD%E6%96%87%E7%AE%80%E4%BD%93%E7%95%8C%E9%9D%A2%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 切换为中文简体界面（可选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%B7%BB%E5%8A%A0%E7%BA%BF%E7%A8%8B%E7%BB%84"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 添加线程组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%B7%BB%E5%8A%A0HTTP%E8%AF%B7%E6%B1%82"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 添加HTTP请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%B7%BB%E5%8A%A0%E7%BB%93%E6%9E%9C%E6%A0%91%E8%A7%86%E5%9B%BE-x2F-%E8%81%9A%E5%90%88%E8%A7%86%E5%9B%BE"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 添加结果树视图&#x2F;聚合视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%89%A7%E8%A1%8C%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95-x2F-%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.5 执行性能测试&#x2F;并发测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB"><span class="toc-number">1.3.6.</span> <span class="toc-text">3.6 测试报告解读</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/" class="archive-article-date">
-  	<time datetime="2023-05-21T06:39:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/">动态规划算法的打印思路</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Leetcode笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" class="archive-article-date">
-  	<time datetime="2023-05-21T06:24:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">Java注解机制与junit单元测试框架</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/24/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%88java%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2023-04-24T11:19:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/24/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%88java%EF%BC%89/">socket网络编程实战（java）</a>
-    </h1>
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/24/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6-logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2023-04-24T02:53:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/24/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6-logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">日志框架:logback快速入门</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/22/java%E7%A7%BB%E4%BD%8D%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-04-21T16:08:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/22/java%E7%A7%BB%E4%BD%8D%E8%A1%A8%E8%BE%BE%E5%BC%8F/">java移位表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/21/%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83/" class="archive-article-date">
-  	<time datetime="2023-04-21T13:48:02.560Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/04/21/%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83/">发布博客！</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/22/%E4%B8%80%E4%BA%9B%E5%AF%B9%E4%BA%8EPOJO%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%88Spring%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2023-03-21T17:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/22/%E4%B8%80%E4%BA%9B%E5%AF%B9%E4%BA%8EPOJO%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%88Spring%EF%BC%89/">一些对于POJO的理解（Spring）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaEE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -505,8 +443,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
