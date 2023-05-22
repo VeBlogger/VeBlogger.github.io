@@ -154,7 +154,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="初次使用JMeter……"><a href="#初次使用JMeter……" class="headerlink" title="初次使用JMeter……"></a>初次使用JMeter……</h1><p>为了测试自己的接口在并发请求下表现如何，不得不快速入门了Apache JMeter。之前用过Postman，Postman的界面更友好美观，如果只是简单测试下接口的响应，强烈推荐Postman，但它确实并不支持并发测试。（至少我搜到的所谓postman并发测试教程都是错的，runner是阻塞排队执行，并不是并发。）</p>
+        <p>为了测试自己的接口在并发请求下表现如何，不得不快速入门了Apache JMeter。之前用过Postman，Postman的界面更友好美观，如果只是简单测试下接口的响应，强烈推荐Postman，但它确实并不支持并发测试。（至少我搜到的所谓postman并发测试教程都是错的，runner是阻塞排队执行，并不是并发。）</p>
 <p>本文主要分为<strong>安装JDK、安装JMeter、JMeter的使用</strong>三大部分，其中JMeter的使用包括如下5个部分。全文操作下来仅需20min-1h，即可完成JMeter入门。</p>
 <ul>
 <li><p>添加线程组</p>
@@ -403,6 +403,80 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot：实现异步响应请求（解决前端请求超时的问题）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/17/SpringBoot%EF%BC%9A%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%EF%BC%88%E8%A7%A3%E5%86%B3%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E8%B6%85%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89/">SpringBoot：实现异步响应请求（解决前端请求超时的问题）</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/17/SpringBoot%EF%BC%9A%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%EF%BC%88%E8%A7%A3%E5%86%B3%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E8%B6%85%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2023-05-16T17:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>实际场景中会遇到请求业务处理流程耗时较长，比如长查询，远程调用等，主线程会被一直占用会影响其他请求的响应，导致服务端性能下降。同时，前端向服务端发送请求后等待响应的超时时间比较短(一般20s或30s)，而我们实际业务执行可能超过1分钟。所以以下需要解决此问题。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -897,6 +971,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">

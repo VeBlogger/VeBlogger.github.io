@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: SpringBoot | Hexo</title>
+  <title>SpringBoot：实现异步响应请求（解决前端请求超时的问题） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/tags/SpringBoot/index.html">
+  <meta name="description" content="问题实际场景中会遇到请求业务处理流程耗时较长，比如长查询，远程调用等，主线程会被一直占用会影响其他请求的响应，导致服务端性能下降。同时，前端向服务端发送请求后等待响应的超时时间比较短(一般20s或30s)，而我们实际业务执行可能超过1分钟。所以以下需要解决此问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot：实现异步响应请求（解决前端请求超时的问题）">
+<meta property="og:url" content="http://example.com/2023/05/17/SpringBoot%EF%BC%9A%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%EF%BC%88%E8%A7%A3%E5%86%B3%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E8%B6%85%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="问题实际场景中会遇到请求业务处理流程耗时较长，比如长查询，远程调用等，主线程会被一直占用会影响其他请求的响应，导致服务端性能下降。同时，前端向服务端发送请求后等待响应的超时时间比较短(一般20s或30s)，而我们实际业务执行可能超过1分钟。所以以下需要解决此问题。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-16T17:04:18.000Z">
+<meta property="article:modified_time" content="2023-05-22T17:07:10.121Z">
 <meta property="article:author" content="Veblogger">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -132,74 +138,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SpringBoot：实现异步响应请求（解决前端请求超时的问题）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2023-05-21T17:46:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/">SpringBoot项目分层与层级理解</a>
+    <h1 class="article-title" itemprop="name">
+      SpringBoot：实现异步响应请求（解决前端请求超时的问题）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/17/SpringBoot%EF%BC%9A%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%EF%BC%88%E8%A7%A3%E5%86%B3%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E8%B6%85%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89/" class="archive-article-date">
+        
+        <a href="/2023/05/17/SpringBoot%EF%BC%9A%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%EF%BC%88%E8%A7%A3%E5%86%B3%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E8%B6%85%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89/" class="archive-article-date">
   	<time datetime="2023-05-16T17:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-17</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/05/17/SpringBoot%EF%BC%9A%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%EF%BC%88%E8%A7%A3%E5%86%B3%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E8%B6%85%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89/">SpringBoot：实现异步响应请求（解决前端请求超时的问题）</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>实际场景中会遇到请求业务处理流程耗时较长，比如长查询，远程调用等，主线程会被一直占用会影响其他请求的响应，导致服务端性能下降。同时，前端向服务端发送请求后等待响应的超时时间比较短(一般20s或30s)，而我们实际业务执行可能超过1分钟。所以以下需要解决此问题。</p>
+<span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>解决的方案分为以下两步骤</p>
+<h3 id="1-服务端异步处理"><a href="#1-服务端异步处理" class="headerlink" title="1.服务端异步处理"></a>1.服务端异步处理</h3><p>你需要将请求接口进行一些简单的改进。将返回值类型变更为Callable<T>类型，其中T可以为任意类型比如String或你原有的自定义类型。以下的new Callable方法，会新建一个线程，用于执行业务逻辑并在得到结果后自动返回给前端。而主线程无需等待。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/GetMonthCdateRpt&quot;, method = RequestMethod.POST)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> Callable&lt;String&gt; <span class="title function_">GetMonthCdateRpt</span><span class="params">(<span class="meta">@RequestBody</span> HashMap&lt;String, Object&gt; map)</span> &#123;</span><br><span class="line">    logger.info(<span class="string">&quot;主线程开始&quot;</span>);</span><br><span class="line">    Callable&lt;String&gt; result = <span class="keyword">new</span> <span class="title class_">Callable</span>&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">            logger.info(<span class="string">&quot;副线程开始&quot;</span>);</span><br><span class="line">            <span class="comment">/*这里沉睡1分钟,表示处理耗时业务执行*/</span></span><br><span class="line">            Thread.sleep(<span class="number">60000</span>);</span><br><span class="line">            logger.info(<span class="string">&quot;副线程返回&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    logger.info(<span class="string">&quot;主线程返回&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-设置响应时间"><a href="#2-设置响应时间" class="headerlink" title="2.设置响应时间"></a>2.设置响应时间</h3><p>改进完接口方法后，你需要新建一个WebMvcConfigurer的实现类，名字可以为WebAppConfigurer.java实现异步处理的支持，如果你已存在其他WebMvcConfigurer的类，则可以把代码追加进去。代码内容如下：</p>
+<p>@Configuration<br>public class WebAppConfigurer implements WebMvcConfigurer {</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//异步处理支持</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureAsyncSupport</span><span class="params">(<span class="keyword">final</span> AsyncSupportConfigurer configurer)</span> &#123;</span><br><span class="line">    configurer.setDefaultTimeout(<span class="number">120</span> * <span class="number">1000L</span>);<span class="comment">//设置响应时间 120s</span></span><br><span class="line">    configurer.registerCallableInterceptors(timeoutInterceptor());</span><br><span class="line">    configurer.setTaskExecutor(threadPoolTaskExecutor());</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> TimeoutCallableProcessingInterceptor <span class="title function_">timeoutInterceptor</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TimeoutCallableProcessingInterceptor</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> ThreadPoolTaskExecutor <span class="title function_">threadPoolTaskExecutor</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">ThreadPoolTaskExecutor</span> <span class="variable">t</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolTaskExecutor</span>();</span><br><span class="line">    t.setCorePoolSize(<span class="number">10</span>);</span><br><span class="line">    t.setMaxPoolSize(<span class="number">100</span>);</span><br><span class="line">    t.setQueueCapacity(<span class="number">20</span>);</span><br><span class="line">    t.setThreadNamePrefix(<span class="string">&quot;WYF-Thread-&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>}<br>执行完以上两步骤后，重新运行服务，调用接口可以异步返回结果，前端可以最大等待的响应时间为上面设置的120s。</p>
+<p>问题已解决。</p>
+<h2 id="需要避免踩到的坑"><a href="#需要避免踩到的坑" class="headerlink" title="需要避免踩到的坑"></a>需要避免踩到的坑</h2><p>如果你按上文操作后，还是会出现超时情况，有可能是你用到了以下几种软件，需要对应设置一下。</p>
+<h3 id="1-关于dubbo中的设置"><a href="#1-关于dubbo中的设置" class="headerlink" title="1.关于dubbo中的设置"></a>1.关于dubbo中的设置</h3><p>如果你使用的了dubbo这样的Jave RPC框架，你除了以上设置后，还需要在application-*.yml配置消费端的默认的响应超时时长。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dubbo:</span><br><span class="line">  application:</span><br><span class="line">    name: myweb</span><br><span class="line"></span><br><span class="line">  consumer:</span><br><span class="line">    timeout: 120000 #默认超时时间120s</span><br></pre></td></tr></table></figure>
+
+<p>同时注意在dubbo的*consume-client.xml服务注册中，如果单个服务也设置了timeout会以各自服务配置的超时时长为准。如下的timeout是20秒，需要修改或直接删掉此timeout的设置。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:reference</span> <span class="attr">id</span>=<span class="string">&quot;reportUserInfoService&quot;</span></span></span><br><span class="line"><span class="tag">                 <span class="attr">interface</span>=<span class="string">&quot;com.zh.fee.service.UserInfoService&quot;</span> <span class="attr">timeout</span>=<span class="string">&quot;20000&quot;</span></span></span><br><span class="line"><span class="tag">                 <span class="attr">retries</span>=<span class="string">&quot;0&quot;</span> <span class="attr">check</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 2.关于tomcat的设置</p>
+<p>上文中是springboot开发环境，使用了内置的tomcat。而在实际生产环境中一般用的是外置tomcat来部署(便于后续发布更新)，需要在tomcat的配置文件server.xml中设置超时时间(默认20秒以下设置为120秒)。</p>
+<pre><code>&lt;Connector port=&quot;8811&quot; protocol=&quot;HTTP/1.1&quot;
+           connectionTimeout=&quot;120000&quot;
+           redirectPort=&quot;8443&quot; /&gt;
+</code></pre>
+<p>3.关于Nginx的设置</p>
+<p>如果服务端使用到Nginx做了反向代理转发请求，就需要在Nginx的配置文件nginx.conf中设置超时时间，否则会返回“java.io.IOException: 你的主机中的软件中止了一个已建立的连接”这样的异常提示。</p>
+<p>未设置时Nginx响应时间默认60秒，这里我将http头部的keepalive_timeout 、client_header_timeout 、client_body_timeout 、send_timeout 、以及server代码块中的proxy_read_timeout 均配置为120秒。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line">    <span class="attribute">client_max_body_size</span> <span class="number">100m</span>;</span><br><span class="line">    <span class="comment">#log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span></span><br><span class="line"></span><br><span class="line">​	<span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">​	<span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">​	<span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">​	<span class="attribute">keepalive_timeout</span>  <span class="number">120</span>; <span class="comment">#连接超时时间,服务器将会在这个时间后关闭连接</span></span><br><span class="line">​	<span class="attribute">send_timeout</span> <span class="number">120</span>;    <span class="comment">#发送超时时间</span></span><br><span class="line">​	<span class="attribute">client_header_timeout</span> <span class="number">120</span>;    <span class="comment">#请求头的超时时间</span></span><br><span class="line">​	<span class="attribute">client_body_timeout</span> <span class="number">120</span>;    <span class="comment">#请求体的读超时时间</span></span><br><span class="line">​	<span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">.....</span><br><span class="line"></span><br><span class="line"><span class="comment">#业务系统的配置</span></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">9092</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  localhost;</span><br><span class="line"></span><br><span class="line">​	<span class="section">location</span> / &#123;</span><br><span class="line">​     		<span class="attribute">proxy_pass</span> http://127.0.0.1:8811/mywebsev/;</span><br><span class="line">​     		<span class="attribute">proxy_read_timeout</span> <span class="number">120</span>;  <span class="comment"># 等候后端服务器响应时间 秒</span></span><br><span class="line">​    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>保存完记得重启Nginx。</p>
+<p>以上完毕。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -215,19 +235,144 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAW4AAAFuCAAAAACEya1TAAAGzklEQVR42u3by24bQQwEQP3/TytwkEMMeaVucuSLak+BvK+p2QPRZG63+Lj/PR5/+f94/D35Jb/z45s8P/PUOcmbHD5w48aNGzfuD+a+Pz2SRV6d2d4/wc3fJ7/bZl3tO+DGjRs3bty4E+7nxV++mHaRz5/VFn/tR5PQJ8Vxsi7cuHHjxo0b91nuPNxJsPI7t2XlqVXkd8ONGzdu3Lhx/z73JpCabW3SoGrp23OSMhE3bty4cePGfZY7b27lrztrvOV/nW3YrNmWDzMd61Xixo0bN27cH8mdHG0L6tP+ffjAihs3bty4P5L7Xh5JM6wdi9kHTHmEtP9l5vbvDrhx48aNGzfuYEVJNPObLa58w/JnJU3BWaDWttNw48aNGzdu3An3PoiZvXR+bU42a5KdHfe5NMSNGzdu3Lhxj4rCvBzMR3DORlqbwq5d16zwxY0bN27cuHHn3JuQqF1kvoWzgi9/q3zb8udGkR9u3Lhx48aNO+DOB1xm7bTZOM7mzm15Nyvs2jfBjRs3bty4cbfcbWOpbVntC7W2Jbb5yJKxp+ITwY0bN27cuHGX3EkZ1NLMhn42gdRm7GYTRb3Qw40bN27cuHGnerf2FfPhm33UtX/u/jNqN/LF03Hjxo0bN27cF9VIsuw89Jk1nH7zqk0zb3MVbty4cePGjTvnTkqcIoIZlZjJ0/OPYP/0wyUjbty4cePGjTvgbmOjvD3WNqjaxecRWB6HzYKw6CPAjRs3bty4cR+dLcnLxJY7L+PyIZt2g/NCc1hA48aNGzdu3LiDqm8WS+ULm13VRldta20fPw1LUty4cePGjRt3zN0uuw2P8kAnuc8+PJo9tx0betGxxI0bN27cuHEHnZ08mnkeG+XNuaIRtWiPnfpoVpEcbty4cePGjftCcjaas4mK2vGd2Va1xVniMLt2+C3gxo0bN27cH8ndLrJd6ox7tjH7QKotRtv3xI0bN27cuHHnAz2rlOsNQzntYE1efuXjOLPiGDdu3Lhx48a95561wVruPGxqG2z575vtz9ty337HjRs3bty4cU+eHsU3m+hnH2btG35n+WbFKG7cuHHjxo17X+Tlzaq8+Bt+EWWo1H6Ds9W9UMKNGzdu3Lhxx9z5yM6MeN+myoeB8pI0H9nJ22+Xd8aNGzdu3Lhxx9xJubahbJtqm5KxBdoUoEXbDDdu3Lhx48YdpyWbQjBpRM2GddqybB9j5cR56YkbN27cuHHj3nDP2mbJ4E4eId1GRxuizeKwXAk3bty4cePGnXO3ozZ5xLNvgM0aXflGJhszi9Vw48aNGzdu3C13PlJTFz0Ljk0BtxlIaoeBkk/t8hzcuHHjxo0b98M5s3bXpvg7W7ptWmibcna2/bhx48aNGzfu3OpULNX+td2eqKodbedsuKeuuHHjxo0bN27cC+7ZNrRFVT76kwdq+YbNBow24Rpu3Lhx48aN+yonacOXnKxdRrJ5mybcLBRrt/BF8YcbN27cuHHjDkrA/BVnIzJ51LVpU+Ub0MZhSUsvei5u3Lhx48aN++K5bTsq34bNUE5SurWNvVnklBMnbTzcuHHjxo0bd5K0zIZd2oApf7kZ0IZ+Vg62nylu3Lhx48aNO+Ful5eHRO1Lz5pz+yZZHrftW4y4cePGjRs37ufdnLYtlG9AW0S2Lb2cJr8qKS5nb44bN27cuHHjTrjbMZ3kkbOhmU3g1RaLOdmshfbD+bhx48aNGzfuBXdONmtlzVpQ+VWb4nUfjf1wT9y4cePGjRt3wJ00h5LNyDcmb9cl7bd9k6y9z+yzw40bN27cuHHH1U7233hG9G1DKykfW75NOJWXp8UHhxs3bty4ceO+eEoCncc9s+LvHh9tpNUWlLNBorykxo0bN27cuHEnL9EWQHnbaRZmbQZ6ZrFRe86wdMaNGzdu3LhxX6yrbZ61D2vLuzYqekfzbN/MuzwfN27cuHHjxp3WKrd8MflfkzipbVO1xeupT2oWnL14Om7cuHHjxo07eHrysE1Z1jbt8sbYvuDLQ7S8GYkbN27cuHHjbrs5syBpv0mz7ZwVdm2odKqRhhs3bty4ceOO73PLy6y8JGpjqXy4p4268ju0ZWh7Z9y4cePGjRt3G0jN4qR2QCcvyzZn7sOsU4Xmt7vhxo0bN27cuAPu/YhPi9sGXm3Zum+S7aO6H87HjRs3bty4cR/intFsmnPJItunz1aafFLRunDjxo0bN27cb+POx1+SFlcbP7VLfUeMlbfxcOPGjRs3btw5dxstbQZ3Wvq2pbdvts1K1cgBN27cuHHjxr3uSbWFYIuSF1KzIvIdMdYxXNy4cePGjRv31/EHsjQQi/JFbj0AAAAASUVORK5CYII=" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java注解机制与junit单元测试框架
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2023/04/24/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%88java%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">socket网络编程实战（java）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">1.服务端异步处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4"><span class="toc-number">2.2.</span> <span class="toc-text">2.设置响应时间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E9%81%BF%E5%85%8D%E8%B8%A9%E5%88%B0%E7%9A%84%E5%9D%91"><span class="toc-number">3.</span> <span class="toc-text">需要避免踩到的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%B3%E4%BA%8Edubbo%E4%B8%AD%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.1.</span> <span class="toc-text">1.关于dubbo中的设置</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
+  
 
 
           </div>
@@ -250,9 +395,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
