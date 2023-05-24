@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>Archives | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/archives/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Veblogger">
@@ -134,46 +134,42 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-数据传输对象DTO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2023/03/22/%E4%B8%80%E4%BA%9B%E5%AF%B9%E4%BA%8EPOJO%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%88Spring%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2023-03-21T17:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-22</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/24/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%AF%B9%E8%B1%A1DTO/">数据传输对象DTO</a>
+      <a class="archive-article-title" href="/2023/03/22/%E4%B8%80%E4%BA%9B%E5%AF%B9%E4%BA%8EPOJO%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%88Spring%EF%BC%89/">一些对于POJO的理解（Spring）</a>
     </h1>
   
 
-        
-        <a href="/2023/05/24/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%AF%B9%E8%B1%A1DTO/" class="archive-article-date">
-  	<time datetime="2023-05-24T08:03:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-DTO-产生背景"><a href="#1-DTO-产生背景" class="headerlink" title="1. DTO 产生背景"></a>1. DTO 产生背景</h2><p>传统编程模式中，我们都是通过前台请求数据，发送到业务处理 <strong>service</strong> 层，然后由调用 <strong>dao</strong> 层返回 <strong>POJO 实体类</strong> &#x2F; 部分字段，然而这种原始的请求方式带来的缺点较多：</p>
-<ul>
-<li>如果 Hacker 通过前端的 JSON 对象解析出你的表结构，然后就可结合表结构和请求命令模拟发送请求窃取你的个人信息或者造成数据库表结构的泄露；</li>
-<li>后台处理僵硬：如果前台索要的信息不止局限于该 POJO 实体类，还有其他额外信息需要注入，这时候后台处理起来就比较麻烦了；</li>
-<li>多次请求耗费一定的网络资源，减缓效率；</li>
-<li>前后台耦合。</li>
-</ul>
-<p>DTO 应运而生，<strong>数据传输对象 DTO</strong> (Data Transfer Object) 就是将数据封装成 JavaBean，听起来好像和以前习惯封装的 POJO 类无异，其中却有着些许差异，即<strong>按需阻止 DTO 对象，页面需要的字段才进行组织，避免传输整个表的字段</strong>。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaEE</a>
         		</li>
@@ -181,708 +177,21 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-初次使用JMeter……" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/22/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8JMeter%E2%80%A6%E2%80%A6/">初次使用JMeter……</a>
-    </h1>
-  
-
-        
-        <a href="/2023/05/22/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8JMeter%E2%80%A6%E2%80%A6/" class="archive-article-date">
-  	<time datetime="2023-05-22T10:46:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为了测试自己的接口在并发请求下表现如何，不得不快速入门了Apache JMeter。之前用过Postman，Postman的界面更友好美观，如果只是简单测试下接口的响应，强烈推荐Postman，但它确实并不支持并发测试。（至少我搜到的所谓postman并发测试教程都是错的，runner是阻塞排队执行，并不是并发。）</p>
-<p>本文主要分为<strong>安装JDK、安装JMeter、JMeter的使用</strong>三大部分，其中JMeter的使用包括如下5个部分。全文操作下来仅需20min-1h，即可完成JMeter入门。</p>
-<ul>
-<li><p>添加线程组</p>
-</li>
-<li><p>添加HTTP请求</p>
-</li>
-<li><p>添加结果树视图&#x2F;聚合视图</p>
-</li>
-<li><p>执行性能测试&#x2F;并发测试</p>
-</li>
-<li><p>测试报告解读</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot项目分层与层级理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/">SpringBoot项目分层与层级理解</a>
-    </h1>
-  
-
-        
-        <a href="/2023/05/22/SpringBoot%E9%A1%B9%E7%9B%AE%E5%88%86%E5%B1%82%E4%B8%8E%E5%B1%82%E7%BA%A7%E7%90%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2023-05-21T17:46:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近正在学习springboot项目的底层原理，下面总结以下springBoot的项目分层结构与对于整体的层级架构理解</p>
-<h1 id="SpringBoot项目分层"><a href="#SpringBoot项目分层" class="headerlink" title="SpringBoot项目分层"></a>SpringBoot项目分层</h1><h2 id="SpringBoot简单分层"><a href="#SpringBoot简单分层" class="headerlink" title="SpringBoot简单分层"></a>SpringBoot简单分层</h2><blockquote>
-<ul>
-<li><strong>controller</strong>：编写后端提供前端的接口。</li>
-<li><strong>entity</strong>：主要放实体类Bean。</li>
-<li><strong>service</strong>：业务层，编写复杂的服务功能，例如：复杂的数据库操作等。</li>
-<li><strong>impl</strong>：整合service和dao层内容，提供后端完整接口调用。</li>
-<li><strong>mapper</strong>:放Mybatis的xml文件。</li>
-<li><strong>dao</strong>：与在mapper中Mybatis的xml中，sql语句相互形成映射关系，一般为对应实体类简单数据库操作的接口。</li>
-</ul>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-动态规划算法的打印思路" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/">动态规划算法的打印思路</a>
-    </h1>
-  
-
-        
-        <a href="/2023/05/21/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E7%9A%84%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF/" class="archive-article-date">
-  	<time datetime="2023-05-21T06:39:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每次用动态规划求最佳值问题的时候，总会想到一个问题，该如何将每一种结果打印到控制台中呢？下面两段实例说不定会给你新的思路</p>
-<h3 id="零钱兑换I-and-零钱兑换II"><a href="#零钱兑换I-and-零钱兑换II" class="headerlink" title="零钱兑换I and  零钱兑换II"></a>零钱兑换I and  零钱兑换II</h3><h4 id="1-零钱兑换I："><a href="#1-零钱兑换I：" class="headerlink" title="(1)零钱兑换I："></a>(1)零钱兑换I：</h4><p>贪心算法</p>
-<p>伪代码描述思想：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">完全背包之求凑满背包的最少物品数:</span><br><span class="line">容量-&gt;amount; 物品重量-&gt;coins[i]; 价值-&gt;<span class="number">1</span>; 优化目标-&gt;求恰好凑满背包的物品最小价值</span><br><span class="line"><span class="number">1.</span>状态定义:dp[j]为凑满容量为j的背包所需最少物品数</span><br><span class="line"><span class="number">2.</span>状态转移:考虑coins[i]</span><br><span class="line">    <span class="number">2.1</span> 当j&lt;coins[i]时:装不下,继承上一个dp[j]的值</span><br><span class="line">    <span class="number">2.2</span> 当j&gt;=coins[i]时:可以装得下,可以选择装或者不装中价值小的(物品数小的)进行转移</span><br><span class="line">        即:dp[j]=min(dp[j],dp[j-coins[i]+<span class="number">1</span>])</span><br><span class="line"><span class="number">3.</span>初始化:容量为<span class="number">0</span>,最少要装<span class="number">0</span>个就可以装满-&gt;dp[<span class="number">0</span>]=<span class="number">0</span>,看转移方程,其他的要初始化为Integer.MAX_VALUE</span><br><span class="line"><span class="number">4.</span>遍历顺序:这里求最少的物品数,因此排列与组合均可,这里先物品后容量,物品顺序无所谓,容量必须正序(完全背包)</span><br><span class="line"><span class="number">5.</span>返回形式:返回如果dp[amount]有转移直接返回,如果没有转移返回-<span class="number">1</span></span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Leetcode笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java注解机制与junit单元测试框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">Java注解机制与junit单元测试框架</a>
-    </h1>
-  
-
-        
-        <a href="/2023/05/21/Java%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6%E4%B8%8Ejunit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" class="archive-article-date">
-  	<time datetime="2023-05-21T06:24:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>项目构建过程中很多地方需要用到注解，并且需要对每块功能做测试，那么注解到底是什么，该如何自定义注解？junit单元测试的使用方法？</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot：实现异步响应请求（解决前端请求超时的问题）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/17/SpringBoot%EF%BC%9A%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%EF%BC%88%E8%A7%A3%E5%86%B3%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E8%B6%85%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89/">SpringBoot：实现异步响应请求（解决前端请求超时的问题）</a>
-    </h1>
-  
-
-        
-        <a href="/2023/05/17/SpringBoot%EF%BC%9A%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%93%8D%E5%BA%94%E8%AF%B7%E6%B1%82%EF%BC%88%E8%A7%A3%E5%86%B3%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E8%B6%85%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2023-05-16T17:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>实际场景中会遇到请求业务处理流程耗时较长，比如长查询，远程调用等，主线程会被一直占用会影响其他请求的响应，导致服务端性能下降。同时，前端向服务端发送请求后等待响应的超时时间比较短(一般20s或30s)，而我们实际业务执行可能超过1分钟。所以以下需要解决此问题。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-socket网络编程实战（java）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/24/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%88java%EF%BC%89/">socket网络编程实战（java）</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/24/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%88java%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2023-04-24T11:19:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一些关于java socket通信编程的实例解释</p>
-<h3 id="1-需求：客户端实现步骤："><a href="#1-需求：客户端实现步骤：" class="headerlink" title="1.需求：客户端实现步骤："></a>1.需求：客户端实现步骤：</h3><ul>
-<li><p>创建客户端的socket对象，请求与服务端的连接。</p>
-</li>
-<li><p>使用socket对象调用getOutputStream（）方法得到字节输出流</p>
-</li>
-<li><p>使用字节输出流完成数据的发送</p>
-</li>
-<li><p>释放资源：关闭socket管道</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClientDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Socket</span>(<span class="string">&quot;127.0.0.1&quot;</span> , <span class="number">7777</span>);</span><br><span class="line"></span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> socket.getOutputStream();</span><br><span class="line"></span><br><span class="line">            <span class="type">PrintStream</span> <span class="variable">ps</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintStream</span>(os);</span><br><span class="line"></span><br><span class="line">            ps.print(<span class="string">&quot;I&#x27;m TCP client , have your time?&quot;</span>);</span><br><span class="line"></span><br><span class="line">            ps.flush();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-日志框架-logback快速入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/24/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6-logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">日志框架:logback快速入门</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/24/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6-logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2023-04-24T02:53:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java logback日志使用教程</p>
-<h2 id="log-QU"><a href="#log-QU" class="headerlink" title="log QU"></a>log QU</h2><p>1.概述java logback日志使用教程</p>
-<p>日志规范大多是一些接口 ， 提供给实现框架去设计的</p>
-<p>常见规范：</p>
-<p>Commons Logging</p>
-<p>Simple Logging Facade for java</p>
-<p>2.日志的实现框架有那些常见的？</p>
-<p>Log4j</p>
-<p>Logback日志框架（快速入门）</p>
-<p>Logback是一个开源日志组件</p>
-<p>是基于slf4j的日志规范实现的框架</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-java移位表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/22/java%E7%A7%BB%E4%BD%8D%E8%A1%A8%E8%BE%BE%E5%BC%8F/">java移位表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/22/java%E7%A7%BB%E4%BD%8D%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-04-21T16:08:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在 Java 代码里使用 &lt;&lt; 、 &gt;&gt; 和&gt;&gt;&gt;转换成的指令码运行起来会更高效些。</p>
-<p>掌握最基本的移位运算符知识还是很有必要的，这不光可以帮助我们在代码中使用，还可以帮助我们理解源码中涉及到移位运算符的代码。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-博客发布" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/21/%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83/">发布博客！</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/21/%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83/" class="archive-article-date">
-  	<time datetime="2023-04-21T13:48:02.560Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PLAINTEXT</span><br><span class="line">npm i hexo-deployer-git</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo new post &quot;新建博客文章名&quot;</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo cl &amp;&amp; hexo g  &amp;&amp; hexo s</span><br><span class="line">远端提交</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
     </nav>
   
 
@@ -906,9 +215,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
