@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>发布博客！ | Hexo</title>
+  <title>Spring中的定时任务设置 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="发布博客12345678PLAINTEXTnpm i hexo-deployer-gitPLAINTEXThexo new post &quot;新建博客文章名&quot;PLAINTEXThexo cl &amp;&amp; hexo g  &amp;&amp; hexo s远端提交hexo d">
+  <meta name="description" content="当我们希望在某个时间点来执行一些业务方法的时候就用到定时任务，在spring的项目中使用定时任务很简单。如下 第一步、加入jar包 12345678910&lt;dependency&gt;  &lt;groupId&gt;org.springframework&lt;&#x2F;groupId&gt;  &lt;artifactId&gt;spring-context-support&lt;&#x2F;artifa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="发布博客！">
-<meta property="og:url" content="http://example.com/2023/04/21/%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83/index.html">
+<meta property="og:title" content="Spring中的定时任务设置">
+<meta property="og:url" content="http://example.com/2023/04/19/Spring%E4%B8%AD%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%AE%BE%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="发布博客12345678PLAINTEXTnpm i hexo-deployer-gitPLAINTEXThexo new post &quot;新建博客文章名&quot;PLAINTEXThexo cl &amp;&amp; hexo g  &amp;&amp; hexo s远端提交hexo d">
+<meta property="og:description" content="当我们希望在某个时间点来执行一些业务方法的时候就用到定时任务，在spring的项目中使用定时任务很简单。如下 第一步、加入jar包 12345678910&lt;dependency&gt;  &lt;groupId&gt;org.springframework&lt;&#x2F;groupId&gt;  &lt;artifactId&gt;spring-context-support&lt;&#x2F;artifa">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-04-21T13:48:02.560Z">
-<meta property="article:modified_time" content="2023-05-21T06:23:10.452Z">
+<meta property="article:published_time" content="2023-04-19T07:02:23.000Z">
+<meta property="article:modified_time" content="2023-06-19T07:03:43.142Z">
 <meta property="article:author" content="Veblogger">
 <meta name="twitter:card" content="summary">
   
@@ -136,27 +136,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-博客发布" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Spring中的定时任务设置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      发布博客！
+      Spring中的定时任务设置
     </h1>
   
 
         
-        <a href="/2023/04/21/%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83/" class="archive-article-date">
-  	<time datetime="2023-04-21T13:48:02.560Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-21</time>
+        <a href="/2023/04/19/Spring%E4%B8%AD%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%AE%BE%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2023-04-19T07:02:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PLAINTEXT</span><br><span class="line">npm i hexo-deployer-git</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo new post &quot;新建博客文章名&quot;</span><br><span class="line">PLAINTEXT</span><br><span class="line">hexo cl &amp;&amp; hexo g  &amp;&amp; hexo s</span><br><span class="line">远端提交</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+        <p>当我们希望在某个时间点来执行一些业务方法的时候就用到定时任务，在spring的项目中使用定时任务很简单。如下</p>
+<p><strong>第一步、加入jar包</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;3.1.0.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;&lt;!--spring 其他包...--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.quartz-scheduler&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;quartz&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.8.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;    </span><br></pre></td></tr></table></figure>
+
+<p><strong>第二步、编写任务类</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class TestTask &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private XXXService xxxService;</span><br><span class="line"></span><br><span class="line">    public void taskMethod1() &#123;</span><br><span class="line">       </span><br><span class="line">          xxxService.doSomeThing();</span><br><span class="line">     &#125;</span><br><span class="line">     public void taskMethod2() &#123; 　　　　xxxService.doSomeThing2();      &#125;</span><br><span class="line">　　//......</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+<p>任务类和普通java类一样，任务方法也和普通方法一样，任务方法中的操作，根据具体的需要来写。</p>
+<p><strong>第三步、在spring配置文件中加入配置。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 定时任务类 --&gt;</span><br><span class="line">&lt;bean id=&quot;testTask&quot; class=&quot;com.xxx.TestTask&quot;/&gt;</span><br><span class="line">&lt;!-- 任务1  --&gt;</span><br><span class="line">&lt;bean id=&quot;task1&quot; class=&quot;org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;targetObject&quot;&gt;</span><br><span class="line">         &lt;ref bean=&quot;testTask&quot; /&gt;  </span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line">    &lt;property name=&quot;targetMethod&quot;&gt;   </span><br><span class="line">        &lt;value&gt;testMethod1&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt; </span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;task1Trigger&quot; class=&quot;org.springframework.scheduling.quartz.CronTriggerBean&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;jobDetail&quot;&gt;</span><br><span class="line">        &lt;ref bean=&quot;task1&quot; /&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;cronExpression&quot;&gt;</span><br><span class="line">        &lt;value&gt;0 0 12 * * ?&lt;/value&gt;&lt;!-- 表示每天中午12点0分0秒执行--&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;    </span><br><span class="line"></span><br><span class="line">&lt;!--  --&gt;</span><br><span class="line">&lt;bean id=&quot;doTaskTriggerTaskTriggerscheduler&quot; class=&quot;org.springframework.scheduling.quartz.SchedulerFactoryBean&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;triggers&quot;&gt;</span><br><span class="line">        &lt;list&gt;</span><br><span class="line">            &lt;ref  local=&quot;task1Trigger&quot;  /&gt;</span><br><span class="line">            &lt;!--登记其他的任务触发bean &lt;ref  local=&quot;otherTrigger&quot;  /&gt; --&gt;</span><br><span class="line">        &lt;/list&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt; </span><br></pre></td></tr></table></figure>
+
+<p>其中 cronExpression 下面的表达式格式为 7位符号 中间加空格拼接而成，可以为6位，用例如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">秒 0-59 , - * /     </span><br><span class="line">分 0-59 , - * /     </span><br><span class="line">小时 0-23 , - * /     </span><br><span class="line">日期 1-31 , - * ? / L W C     </span><br><span class="line">月份 1-12 或者 JAN-DEC , - * /     </span><br><span class="line">星期 1-7 或者 SUN-SAT , - * ? / L C #     </span><br><span class="line">年（可选） 留空, 1970-2099 , - * /     </span><br><span class="line">表达式意义     </span><br><span class="line">&quot;0 0 12 * * ?&quot; 每天中午12点触发     </span><br><span class="line">&quot;0 15 10 ? * *&quot; 每天上午10:15触发     </span><br><span class="line">&quot;0 15 10 * * ?&quot; 每天上午10:15触发     </span><br><span class="line">&quot;0 15 10 * * ? *&quot; 每天上午10:15触发     </span><br><span class="line">&quot;0 15 10 * * ? 2005&quot; 2005年的每天上午10:15触发     </span><br><span class="line">&quot;0 * 14 * * ?&quot; 在每天下午2点到下午2:59期间的每1分钟触发     </span><br><span class="line">&quot;0 0/5 14 * * ?&quot; 在每天下午2点到下午2:55期间的每5分钟触发 </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>反斜线（&#x2F;）字符表示增量值。例如，在秒字段中“5&#x2F;15”代表从第 5 秒开始，每 15 秒一次。</li>
+<li>问号（?）字符和字母 L 字符只有在月内日期和周内日期字段中可用。问号表示这个字段不包含具体值。所以，如果指定月内日期，可以在周内日期字段中插入“?”，表示周内日期值无关紧要。<br>字母 L 字符是 <em>last</em> 的缩写。放在月内日期字段中，表示安排在当月最后一天执行。在周内日期字段中，如果“L”单独存在，就等于“7”，否则代表当月内周内日期的最后一个实例。所以“0L”表示安排在当月的最后一个星期日执行。</li>
+<li>在月内日期字段中的字母（W）字符把执行安排在最靠近指定值的工作日。把“1W”放在月内日期字段中，表示把执行安排在当月的第一个工作日内。</li>
+<li>井号（#）字符为给定月份指定具体的工作日实例。把“MON#2”放在周内日期字段中，表示把任务安排在当月的第二个星期一。</li>
+<li>星号（*）字符是通配字符，表示该字段可以接受任何可能的值。</li>
+</ul>
 
       
 
@@ -236,7 +256,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3awW7rMAwEwPz/T+cB79y4u6QV9zA+FUUia1SAVEm+XvHz/v98+s378klWS97efuuFh4eHd4yXbO4TZgOevbc+UDw8PLxjvOvw3X7meit5+vl0oEXKwcPDw3uUd50SrlNFe3HPkwQeHh7eX+bdG8rzpIKHh4f3N3mbwkG+ibyE8UCtBQ8PD6/rSdWX3Wd/Ptjfw8PDw1t01duwO7tet0ml2CceHh7eAd5spCkvKyQBPWHMmmF4eHh4J3izwak89OeFhj37h+/i4eHhHePNRpragmyShGYtrugyjYeHh3eY9/3r8qx0+0uSwMPDw/siL79AbwD5BT0fMijyHh4eHt6Il3fe8yX21+58BmBTjMbDw8Ob8TbhNQ/f+8vx8G+Fh4eHd4y3aVm1l/I2xNfZDA8PD+8w797y672JZLMmHh4e3mleEtz3ra/2crxPKnh4eHgneO/LZ9Py37es2pV/+CQeHh7eAV4ScDcJIE82xRBqW9jFw8PDO8DLN50zZp/fF3DrxhgeHh5eyUtSQv7KPAHk1+U2SUT/MeDh4eGteW0p4a5RreQ6npcePtan8fDw8G7lzZabpZBZ0TY5uKKMi4eHh7fmzRpLm8Qwe0ueSPDw8PBO82ZBOU8M7Tp5c6s4CDw8PLwDvFlrqg39bbFjVha5rfOGh4eHFwwK7JtV7ShAXs7IixFRlw8PDw/vJl4b3N/lk6/5Kp8oMeDh4eHdxNtscV9KyI9gmMDw8PDwDvBuyy2jodV9e2y2Qzw8PLw9r70K54WJvBycl4brwQU8PDy8Y7y7AnR7cPnRrEoSeHh4eI/yZiWJvPGftL6KBIOHh4f3KC/Z0IkyRz5MgIeHh/dNXtv0mg1gJYfSjl5FkxF4eHh4t/Jm4bt9WT6A1RY49skJDw8PL+b9A9qjFttB/I8zAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD50lEQVR42u3awW7bQAwEUP//T6fXAImlGXLVusDzqZDdlfbpMCGXr1f8+fr2+X7l57fXv3z3++vr1+skT3j4gwMHDhw44q0mD3q9TnL9ab7kl293hAMHDhw4DnFcbyOByKMxh0jW2YQuDhw4cOD4HI6v8pPE86aoa7/FgQMHDhyfxpGvkNMkKyQBjwMHDhw4PoEjL66eKLSSRmTb8nu8V4oDBw4cOCZJdxNa/8u/H5nvwIEDBw4ccYk1GzjYHFblDcF8q/XucODAgQPHmaB4ZOlN+LWDEe0Qw017EQcOHDhwPMbRBm3SestHE5Kg3d9rdYaGAwcOHDjKYJuVamdjOP+2fc1vr+DAgQMHjgXH7PAmD9qny8K2jXjz4nHgwIEDx8Mc+UBAvs4mvFvQtpmIAwcOHDhOcSRhdmqkIKFsQ7QN47fQOHDgwIFjzbEZLJiVbftjrdlAQ3s0hQMHDhw4NhxJjM1umW9sUxZuztxw4MCBA8dZjlnZ1rYRk2OqWeNvQ3nTHMSBAwcOHCOOs4NuCVnybT4G1z5Jsg4OHDhw4NhwPDGykDcEZ1fy4i2nwYEDBw4cT3PkJVB747ylOBuDmJ2w4cCBAweOsxztUEJ7HDX75OVZe9/h5CAOHDhw4EhXLs5cNkVavn7ykvaF3/Cd4MCBAweO0ebrQMobcIsobduC+V5+qWhx4MCBA8chjqRM2rT52qBtN384aHHgwIEDx7qEe2644dTQQzLA195lhYUDBw4cOH7836S4mo24JRGePGj7yzbU61oTBw4cOHBcDjQkgbop6nLoWQNxduWXlXHgwIEDxyGO2QNtUBLcvHG5eXk4cODAgeMsx+bh8gG4GdxsG7Pnf+3fFQ4cOHDgGA0ltIVZ22qcNRnbaK9P1XDgwIEDx2SKYHWDfKxtNgDXvqr8zK0OXRw4cODAEXBsRtNmYTlrSp4N5rfXceDAgQPHmiOP1U29U8zulcXe7DgKBw4cOHA8wTGLxvzganP4lMTwqbbja/OXAg4cOHDgCDawH3drI3BW8uUhGrHiwIEDB45DHO3w3AwxD9q8XGyf8ObuOHDgwIFjzXFqKGE2XpA0GduYP7A+Dhw4cOBYrL8ZXMhLo/w4aja6d6qtiQMHDhw49hyzkqkdfZttNX8ZSTy3Iw44cODAgWPDMdtSTjMbQUi2l4R0XtrhwIEDB46zHGfLp2Sd/Pdt6G52jQMHDhw4/hVHXqTlUTor0to/FG4QceDAgQPHX+fIUfKHa0O3fYZiRAMHDhw4cBzimA0xzFqE+fZmReNs8AIHDhw4cJziWLXS4lJtdhyVF2DtE7YtSxw4cODAETzDHw9XP3E5rKoMAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -288,7 +308,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">发布博客</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -412,10 +432,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
@@ -424,11 +440,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -437,6 +449,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Leetcode笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
               </li>
             
             <div class="clearfix"></div>
